@@ -151,7 +151,7 @@ const getFunctionName = (functionObj) => {
 const TopTabs = ({ value, onChange, functions, tableLoading }) => {
   return (
     <Container>
-      <div className="flex gap-2 overflow-x-auto scrollbar-thin custom-scrollbar scrollbar-thumb-primary/30 scrollbar-track-gray-100 pb-1.5 px-0.5">
+      <div className="flex gap-3 overflow-x-auto scrollbar-thin custom-scrollbar scrollbar-thumb-primary/30 scrollbar-track-gray-100 pb-1.5 px-0.5">
         {functions.map((item) => {
           const dateTime = item?.functionStartDateTime || "";
           const parts = dateTime.split(" ");
@@ -166,31 +166,55 @@ const TopTabs = ({ value, onChange, functions, tableLoading }) => {
               key={item.id || item.function?.id}
               onClick={() => !isDisabled && onChange(item)}
               disabled={isDisabled}
-              className={`min-w-[100px] max-w-[140px] flex-shrink-0 rounded-lg px-3 py-2 text-xs font-medium transition-all border ${
+              className={`relative flex-shrink-0 min-w-[160px] rounded-xl px-4 py-3 text-left border transition-all ${
                 isActive
-                  ? "bg-primary text-white border-primary shadow-md"
+                  ? "bg-red-50 border-red-200 shadow-sm"
                   : isDisabled
-                    ? "bg-gray-100 text-gray-300 border-gray-100 cursor-not-allowed"
-                    : "bg-white text-gray-600 border-gray-200 hover:border-primary hover:text-primary"
+                    ? "bg-gray-100 border-gray-100 cursor-not-allowed opacity-60"
+                    : "bg-white border-gray-200 hover:border-red-200 hover:bg-red-50/40"
               }`}
             >
-              <p className="font-semibold text-xs truncate text-center">
-                {getFunctionName(item.function)}
-              </p>
-              {date && (
-                <p
-                  className={`text-center mt-0.5 ${isActive ? "text-white/80" : "text-gray-400"}`}
-                >
-                  {date}
-                </p>
+              {/* Left accent bar for active tab */}
+              {isActive && (
+                <span className="absolute left-0 top-0 h-full w-1 rounded-l-xl bg-primary" />
               )}
-              {time && (
-                <p
-                  className={`text-center ${isActive ? "text-white/70" : "text-gray-400"}`}
+
+              <div className="flex items-start gap-2.5">
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                    isActive ? "bg-white text-primary" : "bg-gray-50 text-gray-400"
+                  }`}
                 >
-                  {time}
-                </p>
-              )}
+                  <i className="ki-filled ki-cup text-sm" />
+                </div>
+                <div className="flex flex-col">
+                  <span
+                    className={`text-sm font-bold leading-tight ${
+                      isActive ? "text-primary" : "text-gray-800"
+                    }`}
+                  >
+                    {getFunctionName(item.function)}
+                  </span>
+                  {date && (
+                    <span
+                      className={`text-xs mt-0.5 ${
+                        isActive ? "text-primary/80" : "text-gray-400"
+                      }`}
+                    >
+                      {date}
+                    </span>
+                  )}
+                  {time && (
+                    <span
+                      className={`text-xs ${
+                        isActive ? "text-primary/80" : "text-gray-400"
+                      }`}
+                    >
+                      {time}
+                    </span>
+                  )}
+                </div>
+              </div>
             </button>
           );
         })}
@@ -422,7 +446,7 @@ const calculateItemPrice = (item, matchingRow) => {
         bodyStyle={{ padding: 0 }}
         title={
           <div className="flex items-center gap-2">
-            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-50 text-primary">
               ✱
             </span>
             <span className="text-gray-800">
@@ -3631,179 +3655,140 @@ rows.forEach((r, i) => {
               className="sticky z-10 bg-white pb-2 rounded-lg shadow-sm mb-3"
               style={{ top: "70px" }}
             >
+            
+
               <div className="flex flex-row gap-4 p-4 border-b border-gray-200">
-                <div className="flex flex-row gap-4 items-end">
-                  <div className="flex flex-col">
-                    <span className="text-sm text-gray-600">
-                      <FormattedMessage
-                        id="EVENT_MENU_ALLOCATION.DATE_TIME"
-                        defaultMessage="Date & Time"
-                      />
-                    </span>
-                    <Input
-                      className="p-1 w-[200px] text-black"
-                      type="text"
-                      readOnly
-                      value={
-                        activeFunction?.id === -1
-                          ? ""
-                          : activeFunction?.functionStartDateTime || "-"
-                      }
-                    />
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm text-gray-600">
-                      <FormattedMessage
-                        id="COMMON.PERSON"
-                        defaultMessage="Person"
-                      />
-                    </span>
-                    <Input
-                      className="p-1 w-[70px] text-black text-center"
-                      type="text"
-                      readOnly
-                      value={totalPax}
-                    />
-                  </div>
-                </div>
+  <div className="flex flex-row gap-4 items-end">
+    <div className="flex flex-col">
+      <span className="text-sm text-gray-600">
+        <FormattedMessage
+          id="EVENT_MENU_ALLOCATION.DATE_TIME"
+          defaultMessage="Date & Time"
+        />
+      </span>
+      <Input
+        className="p-1 w-[200px] text-black"
+        type="text"
+        readOnly
+        value={
+          activeFunction?.id === -1
+            ? ""
+            : activeFunction?.functionStartDateTime || "-"
+        }
+      />
+    </div>
+    <div className="flex flex-col items-center">
+      <span className="text-sm text-gray-600">
+        <FormattedMessage
+          id="COMMON.PERSON"
+          defaultMessage="Person"
+        />
+      </span>
+      <Input
+        className="p-1 w-[70px] text-black text-center"
+        type="text"
+        readOnly
+        value={totalPax}
+      />
+    </div>
+  </div>
 
-                <div className="flex flex-row gap-4 items-end flex-1 justify-between">
-                  <div className="flex flex-row gap-4 items-end">
-                    <Input
-                      placeholder={intl.formatMessage({
-                        id: "EVENT_MENU_ALLOCATION.ENTER_PERSON",
-                        defaultMessage: "Enter Person",
-                      })}
-                      value={percentage}
-                      onChange={(e) => setPercentage(e.target.value)}
-                      className="p-1 pl-2 w-28"
-                    />
-                    <Tooltip title="It will increase or decrease the number of persons by the entered number.">
-                      <button
-                        className="btn btn-sm btn-primary"
-                        title="Adjust Person"
-                        onClick={handleAdjustPerson}
-                      >
-                        <FormattedMessage
-                          id="EVENT_MENU_ALLOCATION.ADJUST_PERSON"
-                          defaultMessage="Adjust Person"
-                        />
-                      </button>
-                    </Tooltip>
-                  </div>
+  <div className="flex flex-row gap-4 items-end flex-1 justify-between">
+    <div className="flex flex-row gap-4 items-end">
+      <Input
+        placeholder={intl.formatMessage({
+          id: "EVENT_MENU_ALLOCATION.ENTER_PERSON",
+          defaultMessage: "Enter Person",
+        })}
+        value={percentage}
+        onChange={(e) => setPercentage(e.target.value)}
+        className="p-1 pl-2 w-28"
+      />
+      <Tooltip title="It will increase or decrease the number of persons by the entered number.">
+        <button
+          className="bg-primary text-white text-sm font-semibold px-4 py-2 rounded-md hover:opacity-90 transition"
+          title="Adjust Person"
+          onClick={handleAdjustPerson}
+        >
+          <FormattedMessage
+            id="EVENT_MENU_ALLOCATION.ADJUST_PERSON"
+            defaultMessage="Adjust Person"
+          />
+        </button>
+      </Tooltip>
+    </div>
+  </div>
+</div>
 
-                  {/* <button
-                      onClick={() => {
-                        console.log("🔘 Menu for HM BUTTON CLICKED!");
-                        console.log("📋 Debug Info:", {
-                          moduleId: menuForHMModuleId,
-                          mappingId: menuForHMMappingId,
-                          eventId: eventId,
-                          activeFunction: activeFunction?.id,
-                        });
-
-                        if (!menuForHMMappingId) {
-                          Swal.fire({
-                            icon: "error",
-                            title: "Configuration Missing",
-                            text: "Menu for HM template is not configured. Please set up the template first.",
-                            confirmButtonColor: "#d33",
-                          });
-                          return;
-                        }
-
-                        if (!eventId) {
-                          Swal.fire({
-                            icon: "error",
-                            title: "Error",
-                            text: "Event ID is missing. Please refresh the page.",
-                            confirmButtonColor: "#d33",
-                          });
-                          return;
-                        }
-
-                        setIsMenuForHMOpen(true);
-                      }}
-                      className="bg-primary text-white text-sm px-3 py-2 rounded-md transition "
-                      title="Menu for HM"
-                    >
-                      <FormattedMessage
-                        id="EVENT_MENU_ALLOCATION.MENU_FOR_HM"
-                        defaultMessage="Menu for HM"
-                      />
-                    </button> */}
-                </div>
-              </div>
-
-              <div className="flex gap-2 p-4">
-                <div className="flex w-fit items-center gap-3">
-                  <div className="filItems relative">
-                    <i className="ki-filled ki-magnifier leading-none text-md text-primary absolute top-1/2 start-0 -translate-y-1/2 ms-3"></i>
-                    <input
-                      className="input pl-8"
-                      placeholder={intl.formatMessage({
-                        id: "EVENT_MENU_ALLOCATION.SEARCH_ITEM",
-                        defaultMessage: "Search item",
-                      })}
-                      type="text"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="flex w-full items-center justify-start gap-2 md:justify-end">
-                  <button
-                    onClick={() => setIsAgencyAllocationModal(true)}
-                    className="btn btn-primary text-white text-sm px-3 py-2 rounded-md transition"
-                    title="Agency Allocation"
-                  >
-                    <FormattedMessage
-                      id="EVENT_MENU_ALLOCATION.AGENCY"
-                      defaultMessage="Agency Allocation"
-                    />
-                  </button>
-                  <button
-                    onClick={openSummaryItemModalchefoutside}
-                    className="btn btn-primary text-white text-sm px-3 py-2 rounded-md transition"
-                    title="Chef Labour"
-                  >
-                    <FormattedMessage
-                      id="COMMON.CHEF_LABOUR"
-                      defaultMessage="Chef Labour"
-                    />
-                  </button>
-                  <button
-                    onClick={openSummaryItemModalOustsideAgency}
-                    className="btn btn-primary text-white text-sm px-3 py-2 rounded-md transition"
-                    title="Outsource Agency"
-                  >
-                    <FormattedMessage
-                      id="COMMON.OUTSIDE"
-                      defaultMessage="Outsource Agency"
-                    />
-                  </button>
-                  <button
-                    onClick={openSummaryItemModalInHouseCook}
-                    className="btn btn-primary text-white text-sm px-3 py-2 rounded-md transition"
-                    title="Inside Kitchen"
-                  >
-                    <FormattedMessage
-                      id="COMMON.INSIDE"
-                      defaultMessage="Inside Kitchen"
-                    />
-                  </button>
-                  <button
-                    onClick={openSelectMenureport}
-                    className="bg-[#05B723] text-white text-sm px-3 py-2 rounded-md transition"
-                    title="Report"
-                  >
-                    <FormattedMessage
-                      id="EVENT_MENU_ALLOCATION.REPORT"
-                      defaultMessage="Report"
-                    />
-                  </button>
-                </div>
-              </div>
+<div className="flex gap-2 p-4">
+  <div className="flex w-fit items-center gap-3">
+    <div className="filItems relative">
+      <i className="ki-filled ki-magnifier leading-none text-md text-primary absolute top-1/2 start-0 -translate-y-1/2 ms-3"></i>
+      <input
+        className="input pl-8 border border-gray-200 rounded-md"
+        placeholder={intl.formatMessage({
+          id: "EVENT_MENU_ALLOCATION.SEARCH_ITEM",
+          defaultMessage: "Search item",
+        })}
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+    </div>
+  </div>
+  <div className="flex w-full items-center justify-start gap-2 md:justify-end">
+    <button
+      onClick={() => setIsAgencyAllocationModal(true)}
+      className="bg-white border border-gray-300 text-gray-700 text-sm font-medium px-3.5 py-2 rounded-md hover:border-primary hover:text-primary transition-colors"
+      title="Agency Allocation"
+    >
+      <FormattedMessage
+        id="EVENT_MENU_ALLOCATION.AGENCY"
+        defaultMessage="Agency Allocation"
+      />
+    </button>
+    <button
+      onClick={openSummaryItemModalchefoutside}
+      className="bg-white border border-gray-300 text-gray-700 text-sm font-medium px-3.5 py-2 rounded-md hover:border-primary hover:text-primary transition-colors"
+      title="Chef Labour"
+    >
+      <FormattedMessage
+        id="COMMON.CHEF_LABOUR"
+        defaultMessage="Chef Labour"
+      />
+    </button>
+    <button
+      onClick={openSummaryItemModalOustsideAgency}
+      className="bg-white border border-gray-300 text-gray-700 text-sm font-medium px-3.5 py-2 rounded-md hover:border-primary hover:text-primary transition-colors"
+      title="Outsource Agency"
+    >
+      <FormattedMessage
+        id="COMMON.OUTSIDE"
+        defaultMessage="Outsource Agency"
+      />
+    </button>
+    <button
+      onClick={openSummaryItemModalInHouseCook}
+      className="bg-white border border-gray-300 text-gray-700 text-sm font-medium px-3.5 py-2 rounded-md hover:border-primary hover:text-primary transition-colors"
+      title="Inside Kitchen"
+    >
+      <FormattedMessage
+        id="COMMON.INSIDE"
+        defaultMessage="Inside Kitchen"
+      />
+    </button>
+    <button
+      onClick={openSelectMenureport}
+      className="bg-[#05B723] text-white text-sm font-semibold px-4 py-2 rounded-md hover:opacity-90 transition"
+      title="Report"
+    >
+      <FormattedMessage
+        id="EVENT_MENU_ALLOCATION.REPORT"
+        defaultMessage="Report"
+      />
+    </button>
+  </div>
+</div>
             </div>
 
             <div className="rounded-xl border border-gray-200 bg-white shadow-sm">

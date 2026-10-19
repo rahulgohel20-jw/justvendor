@@ -411,7 +411,7 @@ const handleClose = useCallback(() => {
                   setContactTypeId(typeId);
                   setIsMemberModalOpen(true);
                 }}
-                className="flex items-center gap-1 p-2 rounded-lg bg-[#005BA8] text-md text-white font-semibold "
+                className="flex items-center gap-1 p-2 rounded-lg bg-primary text-md text-white font-semibold "
               >
                 <span>    <FormattedMessage id="COMMON.ADD_VENDOR" defaultMessage="Add Vendor" /></span>
                 <Plus className="w-5 h-5  text-white rounded-full" />
@@ -428,7 +428,7 @@ const handleClose = useCallback(() => {
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                     tab === id
                       ? "bg-primary text-white shadow-sm"
-                      : "bg-blue-100 text-blue-700 hover:bg-blue-200"
+                      : "bg-red-100 text-primary hover:bg-blue-200"
                   } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                   aria-selected={tab === id}
                 >

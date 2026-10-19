@@ -1,39 +1,74 @@
+/**
+ * FunctionCard
+ * Matches the reference design: a rounded card with a bold accent border
+ * on the left, a bold function name, and a date/time line underneath.
+ * No icon.
+ *
+ * Selected  -> thick maroon left border + light pink background + maroon text
+ * Unselected -> thin gray left border + white background + gray/muted text
+ *
+ * NOTE: field names below are guesses based on how EventPlanningPage calls
+ * this component (`functionData={func}`). Adjust the `name`, `date`, and
+ * `time` extraction to match your actual eventFunctions shape if different
+ * (e.g. func.functionDate / func.startTime, or func.dateTime, etc).
+ */
 const FunctionCard = ({ functionData, isSelected }) => {
-  const extractDate = (dateTimeString) => {
-    if (!dateTimeString) return "N/A";
-    return dateTimeString.split(" ")[0];
-  };
+  const name =
+    functionData?.function?.nameEnglish ||
+    functionData?.nameEnglish ||
+    functionData?.functionName ||
+    "Function";
 
-  const extractTime = (dateTimeString) => {
-    if (!dateTimeString) return "N/A";
-    const parts = dateTimeString.split(" ");
-    return parts.length >= 3 ? `${parts[1]} ${parts[2]}` : "N/A";
-  };
+  const dateTimeSource =
+    functionData?.functionStartDateTime ||
+    functionData?.eventStartDateTime ||
+    functionData?.dateTime ||
+    "";
+
+  const date =
+    functionData?.functionDate ||
+    functionData?.date ||
+    dateTimeSource?.split(" ")?.[0] ||
+    "";
+
+  const time =
+    functionData?.startTime ||
+    functionData?.time ||
+    dateTimeSource?.split(" ")?.[1] ||
+    "";
 
   return (
     <div
-      className={`shadow-sm rounded-xl p-2 min-w-[140px] ${
-        isSelected ? "bg-primary text-white" : "bg-white text-gray-500"
-      }`}
+      className={`min-w-[200px] px-4 py-2.5 rounded-lg border-l-4 transition-colors
+        ${
+          isSelected
+            ? "bg-[#fdf1f3] border-l-primary"
+            : "bg-gray-50 border-l-gray-300"
+        }`}
     >
-      <div className="flex items-center gap-2 justify-center">
-        <i
-          className={`ki-filled ki-disk ${isSelected ? "text-white" : "text-primary"} text-xl`}
-        ></i>
-        <h3 className="font-semibold text-sm">{functionData?.function?.nameEnglish}</h3>
-      </div>
-
-      {/* ✅ Add Pax below function name */}
-      {functionData?.pax > 0 && (
-        <div className={`text-center text-md font-bold mt-0.5 ${isSelected ? "text-white/90" : "text-primary"}`}>
-          Pax: {functionData.pax}
-        </div>
+      <p
+        className={`text-sm font-bold leading-tight truncate
+          ${isSelected ? "text-primary" : "text-gray-500"}`}
+        title={name}
+      >
+        {name}
+      </p>
+      {date && (
+        <p
+          className={`text-xs font-semibold leading-tight mt-1
+            ${isSelected ? "text-primary" : "text-gray-400"}`}
+        >
+          {date}
+        </p>
       )}
-
-      <div className={`text-center text-xs mt-1 ${isSelected ? "text-white/80" : "text-gray-500"}`}>
-        <p>Time: {extractTime(functionData?.functionStartDateTime)}</p>
-        <p>Date: {extractDate(functionData?.functionStartDateTime)}</p>
-      </div>
+      {time && (
+        <p
+          className={`text-xs font-semibold leading-tight
+            ${isSelected ? "text-primary" : "text-gray-400"}`}
+        >
+          {time}
+        </p>
+      )}
     </div>
   );
 };

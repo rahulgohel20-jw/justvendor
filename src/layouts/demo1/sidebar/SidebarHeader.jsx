@@ -15,8 +15,8 @@ const getSoftType = () => {
 
 const LOGO_MAP = {
   jcx: {
-    default: "/images/logo.svg",
-    monogram: "/images/monogram.svg",
+    default: "/images/logo.png",
+    monogram: "/images/monogram.png",
     defaultWhite: "/images/logo_white.svg",
     monogramWhite: "/images/monogram_white.svg",
   },
@@ -48,11 +48,11 @@ const SidebarHeader = forwardRef((props, ref) => {
       <Link to="/" className="dark:hidden">
         <img
           src={toAbsoluteUrl(logos.default)}
-          className="default-logo h-[40px] max-w-none transition-all"
+          className="default-logo h-[45px] max-w-none transition-all"
         />
         <img
           src={toAbsoluteUrl(logos.monogram)}
-          className="small-logo h-[36px] max-w-none transition-all"
+          className="small-logo h-[50px] max-w-none transition-all"
         />
       </Link>
       <Link to="/" className="hidden dark:block">

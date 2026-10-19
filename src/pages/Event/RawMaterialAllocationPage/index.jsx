@@ -1037,7 +1037,7 @@ const changeSummary = buildRawMaterialLogSummary(
   const description =
     `Raw Material Distribution ${isUpdate ? "Updated" : "Saved"} — ` +
     `Event No: ${eventData?.eventNo || eventId} | Customer: ${eventData?.party?.nameEnglish || "N/A"} | ` +
-    `Venue: ${eventData?.venue?.nameEnglish || "N/A"} | Category: ${activeTabLabel} | ` +
+    `Venue: ${eventData?.venue?.nameEnglish || eventData?.banquetHallName } | Category: ${activeTabLabel} | ` +
     `Items: ${totalItems} | Total Cost: ₹${totalMaterialCost.toFixed(2)} | ` +
     `Updated By: ${userEmail || "Unknown User"} | ${changeSummary}`;
 
@@ -1917,11 +1917,11 @@ const handleSaveRemarksPopup = (updatedRemarks) => {
                 <span className="text-sm">
                   <FormattedMessage
                     id="EVENT_MENU_ALLOCATION.EVENT_VENUE"
-                    defaultMessage="Event Venue:"
+                    defaultMessage="Event Venue/Banquet:"
                   />
                 </span>
                 <span className="text-sm font-medium text-gray-900">
-                  {eventData?.venue?.nameEnglish || "-"}
+                  {eventData?.venue?.nameEnglish ||eventData?.banquetHallName|| "-"}
                 </span>
               </div>
             </div>
@@ -1992,30 +1992,30 @@ const handleSaveRemarksPopup = (updatedRemarks) => {
           </div>
         </div>
 
-        <div className="flex flex-wrap mb-3 border-gray-200 gap-1 rounded-lg">
-          {tabs.length === 0 ? (
-            <p className="text-gray-500 text-sm px-3">
-              <FormattedMessage
-                id="RAW_MATERIAL_ALLOCATION.NO_CATEGORY_FOUND"
-                defaultMessage="No categories found"
-              />
-            </p>
-          ) : (
-            tabs.map((tab) => (
-              <button
-                key={tab.value}
-                onClick={() => handleTabSwitch(tab)}
-                className={`px-4 py-2 text-sm font-medium border border-gray-200 ${
-                  activeTab === tab.value
-                    ? "bg-primary text-white"
-                    : "bg-gray-50 text-gray-600"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))
-          )}
-        </div>
+        <div className="flex flex-wrap mb-3 gap-2">
+  {tabs.length === 0 ? (
+    <p className="text-gray-500 text-sm px-3">
+      <FormattedMessage
+        id="RAW_MATERIAL_ALLOCATION.NO_CATEGORY_FOUND"
+        defaultMessage="No categories found"
+      />
+    </p>
+  ) : (
+    tabs.map((tab) => (
+      <button
+        key={tab.value}
+        onClick={() => handleTabSwitch(tab)}
+        className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${
+          activeTab === tab.value
+            ? "bg-primary text-white"
+            : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+        }`}
+      >
+        {tab.label}
+      </button>
+    ))
+  )}
+</div>
 
         <div className="flex justify-between mb-4">
           <div className="flex w-fit items-center gap-3">

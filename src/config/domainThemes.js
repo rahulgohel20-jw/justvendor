@@ -26,12 +26,12 @@ export const domainThemes = {
   primaryInverse: "rgba(255, 255, 255, 1)",  // white text on primary
 },
   // default fallback
-  default: {
-   primary: "rgba(102, 51, 153, 1)",          // #663399 - base purple
-  primaryActive: "rgba(82, 41, 122, 1)",     // ~20% darker
-  primaryLight: "rgba(153, 102, 204, 1)",    // lighter purple
-  primaryLighter: "rgba(240, 230, 255, 1)",  // very light purple tint
-  primaryClarity: "rgba(102, 51, 153, 0.10)",// 10% opacity
-  primaryInverse: "rgba(255, 255, 255, 1)",  // white text on primary
+ default: {
+  primary: "rgba(25, 90, 69, 1)",           // #195A45 - base green
+  primaryActive: "rgba(15, 72, 55, 1)",     // ~20% darker
+  primaryLight: "rgba(76, 141, 120, 1)",    // lighter green
+  primaryLighter: "rgba(224, 240, 235, 1)", // very light green tint
+  primaryClarity: "rgba(25, 90, 69, 0.10)", // 10% opacity
+  primaryInverse: "rgba(255, 255, 255, 1)", // white text on primary
   },
 };

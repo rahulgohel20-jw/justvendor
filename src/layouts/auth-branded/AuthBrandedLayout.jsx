@@ -26,12 +26,12 @@ const Layout = () => {
           <div className="  w-full px-8 py-10 md:pb-0 text-center rounded-sm flex flex-col items-center justify-center">
             {/* Heading */}
             <h3 className="text-3xl font-semibold text-black mb-2">
-              Welcome to <span className="text-[#005BA8]">Just Catering</span>
-            </h3>
+  Welcome to <span className="text-primary">Just Vendor</span>
+</h3>
 
             {/* Subheading */}
             <p className="text-md text-gray-800 mb-3">
-              One platform. Total control. Complete automation.
+              One dashboard. Every vendor. Zero hassle.
             </p>
 
             {/* Image */}
@@ -42,12 +42,11 @@ const Layout = () => {
             />
 
             {/* Description */}
-            <p className="text-md text-gray-700 leading-relaxed px-5 md:hidden sm:hidden lg:block">
-              Streamline your kitchen operations, manage orders efficiently, and
-              grow your hospitality business with our{" "}
-              <span className="font-semibold">all-in-one digital solution</span>
-              .
-            </p>
+           <p className="text-md text-gray-700 leading-relaxed px-5 md:hidden sm:hidden lg:block">
+  Onboard, track, and manage all your vendors in one place — from
+  contracts and orders to payments and performance — with our{" "}
+  <span className="font-semibold">all-in-one vendor management solution</span>.
+</p>
           </div>
         </div>
 

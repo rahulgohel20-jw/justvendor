@@ -1763,7 +1763,7 @@ const handleSaveNotes = useCallback(
                   />
                 </span>
                 <span className="text-sm font-medium text-gray-900">
-                  {eventData?.venue?.nameEnglish || "-"}
+                  {eventData?.venue?.nameEnglish || eventData?.banquetHallName || "-"}
                 </span>
               </div>
             </div>
