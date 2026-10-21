@@ -1071,8 +1071,8 @@ const handleWhatsAppSend = async (mobile, recipientName) => {
     onClick={disabled ? undefined : onChange}
     disabled={disabled}
     className={`relative inline-flex h-6 w-11 items-center rounded-full transition ${
-      checked ? "bg-blue-600" : "bg-gray-300"
-    } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+  checked ? "bg-primary" : "bg-gray-300"
+} ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
   >
     <span
       className={`inline-block h-5 w-5 transform rounded-full bg-white transition ${
@@ -1120,11 +1120,11 @@ const handleWhatsAppSend = async (mobile, recipientName) => {
             <button
               onClick={handleReport}
               disabled={loading}
-              className={`px-6 py-2 text-white rounded transition ${
-                loading
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-[#005BA8] hover:bg-[#004a8d]"
-              }`}
+            className={`px-6 py-2 text-white rounded transition ${
+  loading
+    ? "bg-gray-400 cursor-not-allowed"
+    : "bg-primary hover:opacity-90"
+}`}
             >
               {loading ? "Generating..." : "Generate Report"}
             </button>
@@ -1145,9 +1145,9 @@ const handleWhatsAppSend = async (mobile, recipientName) => {
       key={lang.value}
       onClick={() => setSelectedLanguage(lang.value)}
       className={`flex-1 py-2.5 font-medium transition ${
-        selectedLanguage === lang.value
-          ? "bg-[#005BA8] text-white"
-          : "bg-white text-gray-700 hover:bg-gray-50"
+       selectedLanguage === lang.value
+  ? "bg-primary text-white"
+  : "bg-white text-gray-700 hover:bg-gray-50"
       }`}
     >
       {lang.label}
@@ -1564,8 +1564,7 @@ const handleWhatsAppSend = async (mobile, recipientName) => {
                 plugins={[pdfPlugin]}
                 renderLoader={(percentages) => (
                   <div className="flex flex-col items-center justify-center h-full">
-                    <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-
+<div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
                     <p className="mt-4 text-gray-600 font-medium">
                       Loading PDF... {Math.round(percentages)}%
                     </p>

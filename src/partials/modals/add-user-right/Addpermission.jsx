@@ -78,7 +78,7 @@ const AddPermission = ({
         </div>
         <div className="border rounded-lg overflow-hidden">
         {/* Table Header */}
-        <div className="grid grid-cols-5 bg-[#005BA8] text-white py-2 font-medium">
+        <div className="grid grid-cols-5 bg-primary text-white py-2 font-medium">
           <div className="pl-4">Permission</div>
           <div className="text-center">Add</div>
           <div className="text-center">Edit</div>
@@ -113,7 +113,7 @@ const AddPermission = ({
                         type="checkbox"
                         checked={perm[field] === true}   // ✅ auto check
                         onChange={() => togglePermission(index, field)}
-                        className="w-5 h-5 accent-[#005BA8]"
+                        className="w-5 h-5 accent-primary"
                       />
                     </div>
                   ))}
@@ -129,13 +129,13 @@ const AddPermission = ({
         <div className="flex justify-end gap-3 mt-5">
           <button
             onClick={onClose}
-            className="px-5 py-2 bg-gray-200 rounded"
+            className="btn btn-light px-5 py-2 rounded"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
-            className="px-5 py-2 bg-[#005BA8] text-white rounded"
+            className="btn btn-primary px-5 py-2 rounded hover:bg-primary-active"
           >
             Save
           </button>

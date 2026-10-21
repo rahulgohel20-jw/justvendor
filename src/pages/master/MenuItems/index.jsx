@@ -68,7 +68,7 @@ const closeVideoModal = () => setVideoModal({ open: false, url: "" });
       showCancelButton: true,
       confirmButtonText: "Yes, Sync",
       cancelButtonText: "Cancel",
-      confirmButtonColor: "#2563eb",
+      confirmButtonColor: "#195a45",
       cancelButtonColor: "#64748b",
     });
 
@@ -117,7 +117,7 @@ const getYoutubeEmbedUrl = (url) => {
       showCancelButton: true,
       confirmButtonText: "Yes, Sync",
       cancelButtonText: "Cancel",
-      confirmButtonColor: "#2563eb",
+      confirmButtonColor: "#195a45",
       
       cancelButtonColor: "#64748b",
     });
@@ -618,43 +618,39 @@ useEffect(() => {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2">
-          {canAccessCaptainRecipe && permissions.add && (
-           
-              <Button
-                size="medium"
-                type="primary"
-                icon={<SyncOutlined spin={captainSyncLoading} />}
-                loading={captainSyncLoading}
+            {canAccessCaptainRecipe && permissions.add && (
+              <button
+                type="button"
+                disabled={captainSyncLoading}
                 onClick={syncCaptainRecipe}
-                className="bg-primary px-5 rounded-md text-xs"
+                className="btn btn-primary px-5 rounded-md text-xs hover:bg-primary-active flex items-center gap-2 disabled:opacity-50"
               >
+                <SyncOutlined spin={captainSyncLoading} />
                 Sync Captain
-              </Button>
-            
-          )}
-            {permissions.add && (
-              <Button
-                size="medium"
-                type="primary"
-                icon={<SyncOutlined spin={syncLoading} />}
-                loading={syncLoading}
-                onClick={syncrawmatrial}
-                className="bg-primary px-5 rounded-md text-xs"
-              >
-                Sync Raw Material
-              </Button>
+              </button>
             )}
 
             {permissions.add && (
-              <Button
-                size="medium"
-                type="primary"
-                icon={<i className="ki-filled ki-plus text-xs" />}
-                onClick={() => navigate("/master/menu-items")}
-                className="bg-primary px-5 rounded-md text-xs"
+              <button
+                type="button"
+                disabled={syncLoading}
+                onClick={syncrawmatrial}
+                className="btn btn-primary px-5 rounded-md text-xs hover:bg-primary-active flex items-center gap-2 disabled:opacity-50"
               >
+                <SyncOutlined spin={syncLoading} />
+                Sync Raw Material
+              </button>
+            )}
+
+            {permissions.add && (
+              <button
+                type="button"
+                onClick={() => navigate("/master/menu-items")}
+                className="btn btn-primary px-5 rounded-md text-xs hover:bg-primary-active flex items-center gap-2"
+              >
+                <i className="ki-filled ki-plus text-xs" />
                 Create New
-              </Button>
+              </button>
             )}
           </div>
         </div>
@@ -784,7 +780,7 @@ useEffect(() => {
   <div className="flex gap-2">
     {permissions.edit && (
       <button
-        className="w-9 h-9 flex items-center justify-center rounded hover:bg-blue-50 text-blue-600 transition-colors"
+        className="w-9 h-9 flex items-center justify-center rounded hover:bg-[#a9e7bc] text-primary transition-colors"
         onClick={() => handleEdit(item)}
         title="Edit"
       >

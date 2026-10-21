@@ -276,14 +276,14 @@ const CopyRecipe = ({ isOpen, onClose, onCopy, isCaptainRecipe = false }) => {
 
       {/* Footer Buttons */}
       <div className="flex justify-center gap-5 mt-6">
-        <Button
-          type="primary"
-          className="!w-28 !font-semibold bg-primary"
+        <button
+          type="button"
+          className="btn btn-primary !w-28 !font-semibold hover:bg-primary-active disabled:opacity-50"
           onClick={handleCopy}
           disabled={!items.some((i) => i.checked)}
         >
           Copy
-        </Button>
+        </button>
         <Button
           danger
           className="!w-28 !font-semibold"

@@ -1777,7 +1777,7 @@ const handleSaveNotes = useCallback(
                 className={`text-sm px-3 py-2 rounded-md transition
           ${
             hasUnsavedChanges && !isSaving
-              ? "bg-[#005BA8] text-white"
+              ? "bg-primary text-white"
               : "bg-gray-300 text-gray-500 cursor-not-allowed"
           }`}
               >
@@ -2673,7 +2673,7 @@ const LabourTable = ({
                       onClick={onOpenAddLabourShift}
                       className="flex-shrink-0"
                     >
-                      <Plus className="w-5 h-5 text-white bg-blue-600 rounded-full p-0.5" />
+                      <Plus className="w-5 h-5 text-white bg-primary rounded-full p-0.5" />
                     </button>
                   </div>
                   <div className="col-span-2 text-sm font-semibold text-gray-700">
@@ -2702,7 +2702,7 @@ const LabourTable = ({
       />
                     </span>
                     <button onClick={onOpenAddVenue} className="flex-shrink-0">
-                      <Plus className="w-5 h-5 text-white bg-blue-600 rounded-full p-0.5" />
+                      <Plus className="w-5 h-5 text-white bg-primary rounded-full p-0.5" />
                     </button>
                   </div>
                   <div className="col-span-1 text-sm text-center font-semibold text-gray-700">
@@ -2737,7 +2737,7 @@ const LabourTable = ({
                     onClick={onOpenAddLabourShift}
                     className="flex-shrink-0"
                   >
-                    <Plus className="w-5 h-5 text-white bg-blue-600 rounded-full p-0.5" />
+                    <Plus className="w-5 h-5 text-white bg-primary rounded-full p-0.5" />
                   </button>
                 </div>
 
@@ -3010,7 +3010,7 @@ const ShiftRow = ({
            onClick={() => onAddNotes(parentRowId, shift.id)}
             title="Add Notes"
           >
-            <FileText className="w-4 h-4 text-blue-600" />
+            <FileText className="w-4 h-4 text-primary" />
           </button>
 
           <button
@@ -3180,7 +3180,7 @@ const ShiftRow = ({
           onClick={() => onAddNotes(parentRowId, shift.id)}
             title="Add Notes"
           >
-            <FileText className="w-4 h-4 text-blue-600" />
+            <FileText className="w-4 h-4 text-primary" />
           </button>
 
           <button

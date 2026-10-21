@@ -13,25 +13,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
-
-/* Hide scrollbar for IE, Edge and Firefox */
-body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Also hide for html element */
+body::-webkit-scrollbar,
 html::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+  height: 10px;
 }
 
+body::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track {
+  background: #eef2f7;
+  border-radius: 9999px;
+}
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+  background-color: #1f8f64;
+  border-radius: 9999px;
+  border: 2px solid #eef2f7;
+}
+
+body::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #187b55;
+}
+
+body,
 html {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  -ms-overflow-style: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #1f8f64 #eef2f7;
 }
 
 a {
@@ -45,9 +55,12 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
   min-height: 100vh;
 }
 

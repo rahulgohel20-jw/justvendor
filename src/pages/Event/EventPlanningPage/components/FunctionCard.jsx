@@ -42,7 +42,7 @@ const FunctionCard = ({ functionData, isSelected }) => {
       className={`min-w-[200px] px-4 py-2.5 rounded-lg border-l-4 transition-colors
         ${
           isSelected
-            ? "bg-[#fdf1f3] border-l-primary"
+            ? "bg-[#e3f7e9] border-l-primary"
             : "bg-gray-50 border-l-gray-300"
         }`}
     >

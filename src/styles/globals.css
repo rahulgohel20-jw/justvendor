@@ -73,7 +73,7 @@ html {
 
 /* ACTIVE TAB background + text */
 .allocation-inner-tabs .ant-tabs-tab.ant-tabs-tab-active {
-  background: #005ba8 !important;
+  background: var(--tw-primary) !important;
   border-radius: 8px !important;
   color: #ffffff !important;
 }
@@ -83,16 +83,44 @@ html {
 }
 
 .custom-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #005ba8 !important;
+  color: var(--tw-primary) !important;
   font-weight: 700;
   font-size: larger;
 }
 
+.custom-tabs .ant-tabs-tab:hover .ant-tabs-tab-btn {
+  color: var(--tw-primary-active) !important;
+}
+
 .custom-tabs .ant-tabs-ink-bar {
-  background: #005ba8 !important;
+  background: var(--tw-primary) !important;
 }
 .allocation-inner-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #ffffff !important;
+}
+
+/* Ant Design Primary Button styling & hover to match theme */
+.ant-btn-primary {
+  background-color: var(--tw-primary) !important;
+  border-color: var(--tw-primary) !important;
+  color: var(--tw-primary-inverse, #ffffff) !important;
+  box-shadow: none !important;
+}
+
+.ant-btn-primary:not(:disabled):hover,
+.ant-btn-primary:not(:disabled):focus,
+.ant-btn-primary:not(:disabled):active {
+  background-color: var(--tw-primary-active) !important;
+  border-color: var(--tw-primary-active) !important;
+  color: var(--tw-primary-inverse, #ffffff) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+  background-color: var(--tw-primary-active) !important;
+  border-color: var(--tw-primary-active) !important;
 }
 
 .dnd-active .cursor-grab {

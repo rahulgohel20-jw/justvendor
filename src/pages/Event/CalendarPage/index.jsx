@@ -26,10 +26,10 @@ const CalendarPage = () => {
   const canAccessBanquet = hasModuleAccess("Banquet");
   const [isAvailabilityOpen, setIsAvailabilityOpen] = useState(false);
   const location = useLocation();
-const prefill = location.state || {};
-const [isDayModalOpen, setIsDayModalOpen] = useState(false);
-const [selectedDay, setSelectedDay] = useState(null);
-const [statusFilter, setStatusFilter] = useState(-1);
+  const prefill = location.state || {};
+  const [isDayModalOpen, setIsDayModalOpen] = useState(false);
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [statusFilter, setStatusFilter] = useState(-1);
 
   const [currentMonth, setCurrentMonth] = useState(() => {
     const now = new Date();
@@ -38,7 +38,7 @@ const [statusFilter, setStatusFilter] = useState(-1);
   const [currentYear, setCurrentYear] = useState(() => {
     return String(new Date().getFullYear()); // "2026"
   });
-const [loadingEvents, setLoadingEvents] = useState(false);
+  const [loadingEvents, setLoadingEvents] = useState(false);
 
   const openEvent = (data) => {
     setEventModalData(data);
@@ -47,13 +47,13 @@ const [loadingEvents, setLoadingEvents] = useState(false);
 
   let Id = localStorage.getItem("userId");
   const authStorage = JSON.parse(localStorage.getItem("auth-storage") || "{}");
-const isChildUser = authStorage?.state?.user?.ischilduser ?? false;
-const isInquiryVisible = authStorage?.state?.user?.isInquiryVisible ?? false;
+  const isChildUser = authStorage?.state?.user?.ischilduser ?? false;
+  const isInquiryVisible = authStorage?.state?.user?.isInquiryVisible ?? false;
 
 
   const { isRTL, locale } = useLanguage();
 
-const { isHallAllowed } = useBanquetPermission()
+  const { isHallAllowed } = useBanquetPermission()
 
   const [lang, setLang] = useState(localStorage.getItem("lang") || "en");
 
@@ -153,7 +153,7 @@ const { isHallAllowed } = useBanquetPermission()
     return date.toISOString().split("T")[0];
   };
 
- useEffect(() => {
+  useEffect(() => {
     FetchEventdetails(currentMonth, currentYear, statusFilter);
   }, [lang, currentMonth, currentYear, statusFilter]);
 
@@ -167,67 +167,67 @@ const { isHallAllowed } = useBanquetPermission()
     setCurrentYear(year);
   };
 
-const FetchEventdetails = (month = currentMonth, year = currentYear, status = statusFilter) => {
-  setLoadingEvents(true);
-  
-    GetEventMaster(Id, isChildUser, month, year, status === -1 ? null : status )
+  const FetchEventdetails = (month = currentMonth, year = currentYear, status = statusFilter) => {
+    setLoadingEvents(true);
+
+    GetEventMaster(Id, isChildUser, month, year, status === -1 ? null : status)
       .then((res) => {
         const eventdata = res?.data?.data?.["Event Details"] || [];
 
         setData(
-  eventdata
-    .map((item, index) => {
-      try {
-        const { date: startDate, time12 } = splitDateTime(item.eventStartDateTime);
-        const { date: endDate } = splitDateTime(item.eventEndDateTime || item.eventStartDateTime);
-        const color = getStatusColor(item.status, item.isRMenu);
-        const hasODC = canAccessBanquet
-          ? (item.banquetHallId === null || item.banquetHallId === 0 || !item.banquetHallId)
-          : false;
-        const banquetSuffix = hasODC ? " = " : "";
+          eventdata
+            .map((item, index) => {
+              try {
+                const { date: startDate, time12 } = splitDateTime(item.eventStartDateTime);
+                const { date: endDate } = splitDateTime(item.eventEndDateTime || item.eventStartDateTime);
+                const color = getStatusColor(item.status, item.isRMenu);
+                const hasODC = canAccessBanquet
+                  ? (item.banquetHallId === null || item.banquetHallId === 0 || !item.banquetHallId)
+                  : false;
+                const banquetSuffix = hasODC ? " = " : "";
 
-        return {
-          eventid: item.id,
-          eventTypeId: item.eventType?.id || null,
-          title:
-            banquetSuffix +
-            (item.prefix || "") +
-            getLocalizedText(item.party, "name") +
-            " - " +
-            getLocalizedText(item.eventType, "name"),
-          start: startDate,
-          end: addOneDay(endDate),
-          time: time12,
-          mobile: item.party?.mobileno || "N/A",
-          statusCode: item.status,
-          isRMenu: item?.isRMenu,
-          banquetHallId: item.banquetHallId || null,
-          banquetHallName: item.banquetHallId ? item.banquetHallName : null,
-          address: getLocalizedText(item.venue, "name"),
-          event: getLocalizedText(item.eventType, "name"),
-          eventRooms: item.eventRooms || [],
-          remark: item.remark || "",
-          remarksGujarati: item.remarksGujarati || "",
-          remarksHindi: item.remarksHindi || "",
-          color: color,
-          allDay: true,
-          createdAt: item.createdAt,
-        };
-      } catch (error) {
-        console.error(`Error processing event item ${index}:`, item, error);
-        return null;
-      }
-    })
-    .filter((item) => item !== null)
-    .filter((item) => {
-      if (!canAccessBanquet) return true;           // non-banquet users see all events
-      return isHallAllowed(item.banquetHallId || 0); // banquet users: check hall rights
-    })
-    .filter((item) => {
-      if (isInquiryVisible) return true;   // allowed to see inquiries
-      return item.statusCode !== 0;        // status 0 = Inquiry, hide it otherwise
-    })
-);
+                return {
+                  eventid: item.id,
+                  eventTypeId: item.eventType?.id || null,
+                  title:
+                    banquetSuffix +
+                    (item.prefix || "") +
+                    getLocalizedText(item.party, "name") +
+                    " - " +
+                    getLocalizedText(item.eventType, "name"),
+                  start: startDate,
+                  end: addOneDay(endDate),
+                  time: time12,
+                  mobile: item.party?.mobileno || "N/A",
+                  statusCode: item.status,
+                  isRMenu: item?.isRMenu,
+                  banquetHallId: item.banquetHallId || null,
+                  banquetHallName: item.banquetHallId ? item.banquetHallName : null,
+                  address: getLocalizedText(item.venue, "name"),
+                  event: getLocalizedText(item.eventType, "name"),
+                  eventRooms: item.eventRooms || [],
+                  remark: item.remark || "",
+                  remarksGujarati: item.remarksGujarati || "",
+                  remarksHindi: item.remarksHindi || "",
+                  color: color,
+                  allDay: true,
+                  createdAt: item.createdAt,
+                };
+              } catch (error) {
+                console.error(`Error processing event item ${index}:`, item, error);
+                return null;
+              }
+            })
+            .filter((item) => item !== null)
+            .filter((item) => {
+              if (!canAccessBanquet) return true;           // non-banquet users see all events
+              return isHallAllowed(item.banquetHallId || 0); // banquet users: check hall rights
+            })
+            .filter((item) => {
+              if (isInquiryVisible) return true;   // allowed to see inquiries
+              return item.statusCode !== 0;        // status 0 = Inquiry, hide it otherwise
+            })
+        );
 
         setEvents(res.data);
       })
@@ -235,20 +235,20 @@ const FetchEventdetails = (month = currentMonth, year = currentYear, status = st
         console.log(error);
       })
       .finally(() => {
-      setLoadingEvents(false); 
-    });
+        setLoadingEvents(false);
+      });
   };
 
- const handleDateClick = (info) => {
-  if (canAccessBanquet) {
-    setSelectedDay(new Date(info.dateStr));
-    setIsDayModalOpen(true);
-  } else {
-    navigate("/add-event", {
-      state: { event_date: new Date(info.dateStr) },
-    });
-  }
-};
+  const handleDateClick = (info) => {
+    if (canAccessBanquet) {
+      setSelectedDay(new Date(info.dateStr));
+      setIsDayModalOpen(true);
+    } else {
+      navigate("/add-event", {
+        state: { event_date: new Date(info.dateStr) },
+      });
+    }
+  };
 
   return (
     <Fragment>
@@ -290,7 +290,7 @@ const FetchEventdetails = (month = currentMonth, year = currentYear, status = st
                 })}
               </span>
             </div>
-             <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg">
               <span className="w-3 h-3 rounded-full bg-[#E75480]"></span>
               <span className="text-xs font-medium text-gray-700">
                 {intl.formatMessage({
@@ -349,36 +349,36 @@ const FetchEventdetails = (month = currentMonth, year = currentYear, status = st
             </div>
 
             <div className="flex items-center gap-2">
-                          {/* Status Filter Dropdown */}
-<select
-  value={statusFilter}
-  onChange={(e) => setStatusFilter(Number(e.target.value))}
-  className="border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary"
->
-  <option value={-1}>All</option>
-  <option value={0}>Inquiry</option>
-  <option value={1}>Confirm</option>
-  <option value={2}>Cancel</option>
-  <option value={3}>Tentative</option>
-</select>
+              {/* Status Filter Dropdown */}
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(Number(e.target.value))}
+                className="border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                <option value={-1}>All</option>
+                <option value={0}>Inquiry</option>
+                <option value={1}>Confirm</option>
+                <option value={2}>Cancel</option>
+                <option value={3}>Tentative</option>
+              </select>
 
 
-                {canAccessBanquet && (
-              <button
-  className="btn btn-light border border-primary text-primary text-sm py-2 px-4 flex items-center gap-2 rounded-lg hover:bg-primary hover:text-white transition"
-  onClick={() => setIsAvailabilityOpen(true)}
->
-  <i className="ki-filled ki-calendar-tick"></i>
-  <span>
-                  <FormattedMessage
-                    id="USER.DASHBOARD.DASHBOARD_CALENDAR_CHECK_AVAILABILITY_BUTTON"
-                    defaultMessage="Check Availability"
-                  />
-                </span>
-</button>
-              
-                )}
+              {canAccessBanquet && (
                 <button
+                  className="btn btn-light border border-primary text-primary text-sm py-2 px-4 flex items-center gap-2 rounded-lg hover:bg-primary hover:text-white transition"
+                  onClick={() => setIsAvailabilityOpen(true)}
+                >
+                  <i className="ki-filled ki-calendar-tick"></i>
+                  <span>
+                    <FormattedMessage
+                      id="USER.DASHBOARD.DASHBOARD_CALENDAR_CHECK_AVAILABILITY_BUTTON"
+                      defaultMessage="Check Availability"
+                    />
+                  </span>
+                </button>
+
+              )}
+              {/* <button
   className="btn btn-light border border-primary text-primary text-sm py-2 px-4 flex items-center gap-2 rounded-lg hover:bg-primary hover:text-white transition"
   onClick={() => navigate("/followup-calendar")}
 >
@@ -389,43 +389,43 @@ const FetchEventdetails = (month = currentMonth, year = currentYear, status = st
       defaultMessage="Follow Up Calendar"
     />
   </span>
-</button>
+</button> */}
 
-{permissions.add && (
-              
-              <button
-                className="btn btn-primary text-sm py-2.5 px-6 flex items-center gap-2 rounded-lg"
-                onClick={() => navigate("/add-event")}
-              >
-                <i className="ki-filled ki-plus text-lg"></i>
-                <span>
-                  <FormattedMessage
-                    id="USER.DASHBOARD.DASHBOARD_CALENDAR_ADD_EVENT_BUTTON"
-                    defaultMessage="Add Event"
-                  />
-                </span>
-              </button>
-              
-            )}
+              {permissions.add && (
+
+                <button
+                  className="btn btn-primary text-sm py-2.5 px-6 flex items-center gap-2 rounded-lg"
+                  onClick={() => navigate("/add-event")}
+                >
+                  <i className="ki-filled ki-plus text-lg"></i>
+                  <span>
+                    <FormattedMessage
+                      id="USER.DASHBOARD.DASHBOARD_CALENDAR_ADD_EVENT_BUTTON"
+                      defaultMessage="Add Event"
+                    />
+                  </span>
+                </button>
+
+              )}
             </div>
-                  
-            
+
+
           </div>
         </div>
 
         {/* Create Event Button - Mobile Full Width */}
         <div className="md:hidden mb-4">
           <select
-    value={statusFilter}
-    onChange={(e) => setStatusFilter(Number(e.target.value))}
-    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-gray-700 bg-white mb-3 focus:outline-none focus:ring-2 focus:ring-primary"
-  >
-    <option value={-1}>All</option>
-    <option value={0}>Inquiry</option>
-    <option value={1}>Confirm</option>
-    <option value={2}>Cancel</option>
-    <option value={3}>Tentative</option>
-  </select>
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(Number(e.target.value))}
+            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-gray-700 bg-white mb-3 focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            <option value={-1}>All</option>
+            <option value={0}>Inquiry</option>
+            <option value={1}>Confirm</option>
+            <option value={2}>Cancel</option>
+            <option value={3}>Tentative</option>
+          </select>
           <button
             className="btn btn-primary w-full py-3 px-4 flex items-center justify-center gap-2 rounded-lg text-base font-semibold"
             onClick={() => navigate("/add-event")}
@@ -446,7 +446,7 @@ const FetchEventdetails = (month = currentMonth, year = currentYear, status = st
   Check Availability
 </button> */}
         </div>
-            
+
         {/* Calendar Component - Clean Container */}
         <div className="calendar-container bg-white rounded-lg shadow-sm  md:p-2">
           <CalendarComponent
@@ -471,17 +471,17 @@ const FetchEventdetails = (month = currentMonth, year = currentYear, status = st
       )}
 
       <DayAvailabilityModal
-  isOpen={isDayModalOpen}
-  onClose={() => setIsDayModalOpen(false)}
-  date={selectedDay}
-  userId={Id}
-/>
+        isOpen={isDayModalOpen}
+        onClose={() => setIsDayModalOpen(false)}
+        date={selectedDay}
+        userId={Id}
+      />
 
       <AvailabilityModal
-  isOpen={isAvailabilityOpen}
-  onClose={() => setIsAvailabilityOpen(false)}
-  userId={Id}
-/>
+        isOpen={isAvailabilityOpen}
+        onClose={() => setIsAvailabilityOpen(false)}
+        userId={Id}
+      />
     </Fragment>
   );
 };

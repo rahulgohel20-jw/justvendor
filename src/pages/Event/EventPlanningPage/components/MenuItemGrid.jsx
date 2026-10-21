@@ -7,7 +7,7 @@ import { Eye } from "lucide-react";
 const PAGE_SIZE = 200;
 
 const MenuItemGrid = ({
-  fetchItemsFn = null,           // cfg.api.getItems — back to fetching internally
+  fetchItemsFn = null,           
   fields = null,
   refreshKey,
   category = "All",
@@ -389,7 +389,7 @@ const displayedItems = useMemo(() => {
               key={id}
               onClick={() => onItemClick(item)}
               className={`relative flex flex-col items-start border rounded-lg cursor-pointer transition-colors ${
-                isSelected ? "border-green-500 bg-green-100/30" : "hover:bg-blue-100/40 hover:border-blue-300"
+                isSelected ? "border-green-500 bg-green-100/30" : "hover:bg-[#ddfae6] hover:border-[#acefc1]"
               }`}
             >
               {item.isPackageItem && (
@@ -428,7 +428,7 @@ const displayedItems = useMemo(() => {
       <div ref={sentinelRef} className="h-8 flex items-center justify-center mt-4">
         {loadingMore && (
           <div className="flex items-center gap-2 text-sm text-gray-400">
-            <div className="animate-spin h-4 w-4 rounded-full border-b-2 border-blue-600" />
+            <div className="animate-spin h-4 w-4 rounded-full border-b-2 border-primary" />
             <span>Loading more... (page {currentPage} of {totalPage})</span>
           </div>
         )}

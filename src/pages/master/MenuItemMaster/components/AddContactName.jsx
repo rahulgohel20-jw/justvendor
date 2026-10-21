@@ -519,7 +519,7 @@ useEffect(() => {
                 </select>
                 <button
                   type="button"
-                  className="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 text-xl leading-none"
+                  className="bg-primary hover:bg-primary-active text-white p-2 rounded-lg text-xl leading-none"
                   onClick={() => setIsContactModalOpen(true)}
                 >
                   +

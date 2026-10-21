@@ -681,7 +681,7 @@ const handleSaveRemarks = async (data) => {
             </div>
           </div>
 
-          <div className="col-span-1 lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+           <div className="col-span-1 lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
             {[
               {
                 label: (
@@ -690,7 +690,8 @@ const handleSaveRemarks = async (data) => {
                     defaultMessage="Menu Planning"
                   />
                 ),
-                icon: "/media/eventviewicon/menuprep.png",
+                icon: "/media/eventviewicon/menuprep.svg",
+                tint: true,
                 path: `/menu-preparation/${safeEventId}`,
                 onClick: () => navigate(`/menu-preparation/${safeEventId}`),
                 show: permissionMenuPlanning.view,
@@ -702,7 +703,8 @@ const handleSaveRemarks = async (data) => {
                     defaultMessage="Menu Execution"
                   />
                 ),
-                icon: "/media/eventviewicon/menuallocation.png",
+                icon: "/media/eventviewicon/menuallocation.svg",
+                tint: true,
                 path: `/menu-allocation/${safeEventId}`,
                 onClick: () => navigate(`/menu-allocation/${safeEventId}`),
                 show: permissionMenuExecution.view,
@@ -715,7 +717,8 @@ const handleSaveRemarks = async (data) => {
                     defaultMessage="Raw Material Distribution"
                   />
                 ),
-                icon: "/media/eventviewicon/rawmaterial.png",
+                icon: "/media/eventviewicon/rawmaterial.svg",
+                tint: true,
                 path: `/raw-material-allocation/${safeEventId}`,
                 onClick: () =>
                   navigate(`/raw-material-allocation/${safeEventId}`),
@@ -729,8 +732,9 @@ const handleSaveRemarks = async (data) => {
                     defaultMessage="Labour Agency Order"
                   />
                 ),
-                icon: "/media/eventviewicon/labour.png",
-                 path: `/labour-and-other-management/${safeEventId}`,
+                icon: "/media/eventviewicon/labour.svg",
+                tint: true,
+                path: `/labour-and-other-management/${safeEventId}`,
                 onClick: () =>
                   navigate(`/labour-and-other-management/${safeEventId}`),
                 show: permissionLabourManagement.view,
@@ -743,8 +747,9 @@ const handleSaveRemarks = async (data) => {
                     defaultMessage="Per Dish Costing"
                   />
                 ),
-                icon: "/media/eventviewicon/dishcost.png",
-                 path: `/dish-costing/${safeEventId}`,
+                icon: "/media/eventviewicon/dishcost.svg",
+                tint: true,
+                path: `/dish-costing/${safeEventId}`,
                 onClick: () => navigate(`/dish-costing/${safeEventId}`),
                 show: permissionDishCosting.view,
               },
@@ -755,7 +760,8 @@ const handleSaveRemarks = async (data) => {
                     defaultMessage="Events Report"
                   />
                 ),
-                icon: "/media/eventviewicon/menureport.png",
+                icon: "/media/eventviewicon/menureport.svg",
+                tint: true,
                 path: `/allreports/${safeEventId}`,
                 onClick: () => navigate(`/allreports/${safeEventId}`),
                 show: permissionMenuReport.view,
@@ -771,7 +777,8 @@ const handleSaveRemarks = async (data) => {
                     defaultMessage="Quotation"
                   />
                 ),
-                icon: "/media/eventviewicon/quotation.png",
+                icon: "/media/eventviewicon/quotation.svg",
+                tint: true,
                 path: `/quotation/${safeEventId}`,
                 onClick: () => navigate(`/quotation/${safeEventId}`),
                 show: permissionQuotation.view,
@@ -783,7 +790,8 @@ const handleSaveRemarks = async (data) => {
                     defaultMessage="Invoice"
                   />
                 ),
-                icon: "/media/eventviewicon/invoice.png",
+                icon: "/media/eventviewicon/invoice.svg",
+                tint: true,
                 path: `/add-invoice/${safeEventId}`,
                 onClick: () =>
                   navigate(`/add-invoice/${safeEventId}`, {
@@ -801,7 +809,8 @@ const handleSaveRemarks = async (data) => {
                     defaultMessage="Expense"
                   />
                 ),
-                icon: "/media/eventviewicon/icon.png",
+                icon: "/media/eventviewicon/expense.svg",
+                tint: true,
                 onClick: () =>
                   navigate(`/expense-management/${safeEventId}`, {
                     state: {
@@ -811,29 +820,62 @@ const handleSaveRemarks = async (data) => {
                   }),
                 show: permissionExpense.view,
               },
+              // {
+              //   label: (
+              //     <FormattedMessage
+              //       id="USER.DASHBOARD.EVENT_VIEW.CHAT"
+              //       defaultMessage="Team Chat"
+              //     />
+              //   ),
+              //   renderIcon: () => (
+              //     <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 relative">
+              //       <i className="ki-filled ki-messages text-2xl"></i>
+              //       {chatUnreadCount > 0 && (
+              //         <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center shadow">
+              //           {chatUnreadCount > 99 ? "99+" : chatUnreadCount}
+              //         </span>
+              //       )}
+              //     </div>
+              //   ),
+              //   path: `/event-chat/${safeEventId}`,
+              //   onClick: () => setIsChatModalOpen(true),
+              //   show: true,
+              // },
             ]
               .filter((item) => item.show !== false)
               .map((item, idx) => (
-  <div
-    key={idx}
-    onClick={item.disabled ? undefined : item.onClick}
-    onContextMenu={(e) => handleItemContextMenu(e, item)}
-    className={`bg-white p-4 md:p-6 rounded-xl shadow flex flex-col items-center justify-center min-h-[120px] transition
-      ${item.disabled 
-        ? "opacity-40 cursor-not-allowed" 
-        : "cursor-pointer hover:shadow-md"
-      }`}
-  >
-    <div className="text-blue-600 text-3xl mb-2">
-      <img
-        src={toAbsoluteUrl(item.icon)}
-        alt={item.label}
-        className="w-8 h-8 md:w-10 md:h-10"
-      />
-    </div>
-    <p className="font-large text-gray font-bold text-center">{item.label}</p>
-  </div>
-))}
+                <div
+                  key={idx}
+                  onClick={item.disabled ? undefined : item.onClick}
+                  onContextMenu={(e) => handleItemContextMenu(e, item)}
+                  className={`bg-white p-4 md:p-6 rounded-xl shadow flex flex-col items-center justify-center min-h-[120px] transition
+      ${item.disabled
+                      ? "opacity-40 cursor-not-allowed"
+                      : "cursor-pointer hover:shadow-md"
+                    }`}
+                >
+                  <div className="text-blue-600 text-3xl mb-2">
+                    {item.renderIcon ? (
+  item.renderIcon()
+) : item.tint ? (
+  <span
+    className="inline-block w-8 h-8 md:w-10 md:h-10 bg-primary"
+    style={{
+      WebkitMask: `url(${toAbsoluteUrl(item.icon)}) no-repeat center / contain`,
+      mask: `url(${toAbsoluteUrl(item.icon)}) no-repeat center / contain`,
+    }}
+  />
+) : (
+  <img
+    src={toAbsoluteUrl(item.icon)}
+    alt={typeof item.label === "string" ? item.label : "Icon"}
+    className="w-8 h-8 md:w-10 md:h-10"
+  />
+)}
+                  </div>
+                  <p className="font-large text-gray font-bold text-center">{item.label}</p>
+                </div>
+              ))}
           </div>
         </div>
 
