@@ -90,7 +90,7 @@ const CalendarPage = () => {
 
     switch (statusCode) {
       case 0:
-        return "#3788d8";
+        return "#2F7D8C";
       case 1:
         return "rgba(40, 167, 69, 1)";
       default:
@@ -316,11 +316,10 @@ const CalendarPage = () => {
           {/* Desktop: Horizontal Pills with Create Button */}
           <div className="hidden md:flex md:items-center md:justify-between">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm font-medium bg-[#3788d8] rounded-lg px-4 py-2 text-white">
-                {intl.formatMessage({
-                  id: "USER.DASHBOARD.DASHBOARD_CALENDAR_FILTER_INQUIRY",
-                  defaultMessage: "Inquiry",
-                })}
+              <span className="text-sm font-medium bg-[#2F7D8C] rounded-lg px-4 py-2 text-white">                {intl.formatMessage({
+                id: "USER.DASHBOARD.DASHBOARD_CALENDAR_FILTER_INQUIRY",
+                defaultMessage: "Inquiry",
+              })}
               </span>
               <span className="text-sm font-medium bg-[#E75480] rounded-lg px-4 py-2 text-white">
                 {intl.formatMessage({
