@@ -942,7 +942,7 @@ setInstructionHindi(editData.instructionHindi || "");
               />
               <button
                 type="button"
-                className="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-r-xl shadow hover:scale-105 transition"
+                className="w-10 h-10 flex items-center justify-center bg-primary hover:bg-primary-active text-white rounded-r-xl shadow hover:scale-105 transition"
                 onClick={() => {
                   setIsCategoryModalOpen(true);
                 }}
@@ -978,7 +978,7 @@ setInstructionHindi(editData.instructionHindi || "");
 
               <button
                 type="button"
-                className="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-r-xl shadow hover:scale-105 transition"
+                className="w-10 h-10 flex items-center justify-center bg-primary hover:bg-primary-active text-white rounded-r-xl shadow hover:scale-105 transition"
                 onClick={() => {
                   setIsSubCategoryModalOpen(true);
                 }}
@@ -1141,16 +1141,16 @@ setInstructionHindi(editData.instructionHindi || "");
             <h1 className="text-black text-xl font-medium mb-4">
               Raw Material Items For (100 Pax) :
             </h1>
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
+            <button
+              type="button"
               onClick={() => {
                 setIsCopyRecipe(true);
               }}
-              className="bg-primary h-10 px-6 rounded-md hover:bg-primary mt-7"
+              className="btn btn-primary h-10 px-6 rounded-md hover:bg-primary-active mt-7 flex items-center gap-2"
             >
+              <PlusOutlined />
               Copy Recipe
-            </Button>
+            </button>
           </div>
 
           <div className="flex justify-between items-center">
@@ -1209,7 +1209,7 @@ setInstructionHindi(editData.instructionHindi || "");
 
                   <button
                     type="button"
-                    className="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-r-xl shadow hover:scale-105 transition"
+                    className="w-10 h-10 flex items-center justify-center bg-primary hover:bg-primary-active text-white rounded-r-xl shadow hover:scale-105 transition"
                     onClick={() => {
                       setIsRawMaterialModalOpen(true);
                     }}
@@ -1246,14 +1246,14 @@ setInstructionHindi(editData.instructionHindi || "");
             </div>
 
             <div className="flex gap-2">
-              <Button
-                type="primary"
-                icon={<PlusOutlined />}
+              <button
+                type="button"
                 onClick={handleAddRecipe}
-                className="bg-primary h-10 px-6 rounded-md hover:bg-primary mt-7"
+                className="btn btn-primary h-10 px-6 rounded-md hover:bg-primary-active mt-7 flex items-center gap-2"
               >
+                <PlusOutlined />
                 Add Recipe
-              </Button>
+              </button>
             </div>
           </div>
 
@@ -1283,15 +1283,15 @@ setInstructionHindi(editData.instructionHindi || "");
               )}
 
               {isEdit && (
-                <Button
-                  loading={loadingItems}
-                  type="primary"
-                  icon={<SyncOutlined />}
+                <button
+                  type="button"
+                  disabled={loadingItems}
                   onClick={SyncRawMaterial}
-                  className="bg-primary h-10 px-6 rounded-md hover:bg-blue-700"
+                  className="btn btn-primary h-10 px-6 rounded-md hover:bg-primary-active flex items-center gap-2 disabled:opacity-50"
                 >
+                  <SyncOutlined spin={loadingItems} />
                   Sync Raw Material
-                </Button>
+                </button>
               )}
             </div>
           </div>
@@ -1314,14 +1314,14 @@ setInstructionHindi(editData.instructionHindi || "");
           <h1 className="text-black text-xl font-medium mb-4">
             Captain Recipe For (100 Pax) :
           </h1>
-           <Button
-    type="primary"
-    icon={<PlusOutlined />}
-    onClick={() => setIsCopyCaptainRecipe(true)}
-    className="bg-primary h-10 px-6 rounded-md hover:bg-primary mt-[-16px]"
-  >
-    Copy Captain Recipe
-  </Button>
+           <button
+            type="button"
+            onClick={() => setIsCopyCaptainRecipe(true)}
+            className="btn btn-primary h-10 px-6 rounded-md hover:bg-primary-active mt-[-16px] flex items-center gap-2"
+          >
+            <PlusOutlined />
+            Copy Captain Recipe
+          </button>
         </div>
 
   <div className="flex justify-between items-end mb-4 overflow-x-auto pb-1">
@@ -1418,9 +1418,8 @@ setInstructionHindi(editData.instructionHindi || "");
 
   {/* Right: buttons */}
   <div className="flex items-center gap-2 flex-shrink-0 flex-nowrap">
-    <Button
-      type="primary"
-      icon={<PlusOutlined />}
+    <button
+      type="button"
       onClick={() =>
         handleAddCaptainItems(
           selectedCaptainRecipe,
@@ -1429,10 +1428,11 @@ setInstructionHindi(editData.instructionHindi || "");
           captainUnit?.name,
         )
       }
-      className="bg-primary h-10 px-3 rounded-md whitespace-nowrap"
+      className="btn btn-primary h-10 px-3 rounded-md hover:bg-primary-active whitespace-nowrap flex items-center gap-2"
     >
+      <PlusOutlined />
       {editingCaptainRow !== null ? "Update Recipe" : "Add Recipe"}
-    </Button>
+    </button>
 
     {editingCaptainRow !== null && (
       <Button
@@ -1447,7 +1447,7 @@ setInstructionHindi(editData.instructionHindi || "");
       type="button"
       onClick={SyncCaptainRecipe}
       disabled={loadingItems || !editData?.id}
-      className="bg-primary h-10 px-3 rounded-md text-white whitespace-nowrap disabled:opacity-50 flex items-center gap-2"
+      className="btn btn-primary h-10 px-3 rounded-md hover:bg-primary-active text-white whitespace-nowrap disabled:opacity-50 flex items-center gap-2"
     >
       {loadingItems ? (
         <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
@@ -1526,33 +1526,33 @@ setInstructionHindi(editData.instructionHindi || "");
       </div>
 
       <div className="flex justify-between gap-4 pt-4">
-        <Button
-          type="default"
+        <button
+          type="button"
           onClick={handleCancel}
-          className="bg-white h-10 px-6 rounded-md hover:bg-primary"
+          className="btn btn-light h-10 px-6 rounded-md hover:bg-gray-200"
         >
           Cancel
-        </Button>
+        </button>
 
         <div className="flex gap-4">
-          <Button
-            type="primary"
+          <button
+            type="button"
             onClick={handleNext}
-            className="bg-primary h-10 px-6 rounded-md hover:bg-primary"
+            className="btn btn-primary h-10 px-6 rounded-md hover:bg-primary-active"
           >
             Next
-          </Button>
+          </button>
 
-          <Button
-            type="primary"
-            className="bg-primary h-10 px-6 rounded-md hover:bg-primary w-[120px]"
+          <button
+            type="button"
+            className="btn btn-primary h-10 px-6 rounded-md hover:bg-primary-active w-[120px]"
             onClick={() => {
               setIsSaveOnly(true);
               form.submit();
             }}
           >
             {isEdit ? "Update" : "Save"}
-          </Button>
+          </button>
         </div>
       </div>
 

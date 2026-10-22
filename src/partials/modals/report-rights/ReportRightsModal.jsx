@@ -4,21 +4,21 @@ import { GetAllCustomThemeByUserIdAndModuleId, AddReportRights, GetReportRights 
 import Swal from "sweetalert2";
 
 const COMMON_STYLE = {
-  color: "text-blue-800",
-  bg: "bg-blue-50",
-  border: "border-blue-300",
+  color: "text-primary",
+  bg: "bg-primary-lighter",
+  border: "border-primary-light",
 
-  dot: "bg-blue-600",
-  checkBg: "bg-blue-600",
-  checkBorder: "border-blue-600",
+  dot: "bg-primary",
+  checkBg: "bg-primary",
+  checkBorder: "border-primary",
 
-  badgeBg: "bg-blue-50",
-  badgeText: "text-blue-800",
-  badgeBorder: "border-blue-300",
+  badgeBg: "bg-primary-lighter",
+  badgeText: "text-primary",
+  badgeBorder: "border-primary-light",
 
-  pillBg: "bg-blue-50",
-  pillBorder: "border-blue-300",
-  labelColor: "text-blue-800",
+  pillBg: "bg-primary-lighter",
+  pillBorder: "border-primary-light",
+  labelColor: "text-primary",
 };
 
 const getStyle = () => COMMON_STYLE;
@@ -49,7 +49,7 @@ function Toggle({ on, onToggle }) {
     <div
       onClick={onToggle}
       className={`relative w-10 h-5 rounded-full cursor-pointer transition-colors duration-200 flex-shrink-0 ${
-        on ? "bg-blue-600" : "bg-slate-300"
+        on ? "bg-primary" : "bg-slate-300"
       }`}
     >
       <div className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-all duration-200 ${on ? "left-5" : "left-0.5"}`} />
@@ -367,13 +367,13 @@ try {
                     onClick={() => setSelectedModule(mod.id)}
                     className={`px-3 py-2 cursor-pointer flex items-center justify-between text-sm transition-all border-l-2 ${
                       active
-                        ? "bg-blue-50 border-blue-500 font-medium text-blue-700"
+                        ? "bg-primary-lighter border-primary font-medium text-primary"
                         : "border-transparent text-slate-600 hover:bg-slate-50"
                     }`}
                   >
                     <span>{mod.name}</span>
                     {cnt > 0 && (
-                      <span className="bg-blue-600 text-white rounded-full text-xs font-bold px-2.5 py-1.5">
+                      <span className="bg-primary text-white rounded-full text-xs font-bold px-2.5 py-1.5">
                         {cnt}
                       </span>
                     )}

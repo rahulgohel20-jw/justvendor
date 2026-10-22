@@ -43,8 +43,7 @@ import AllVendor from "./components/AllVendor";
 import AllCustomerToogle from "@/components/modal/AllCustomerToggle";
 import { usePermission } from "../../../hooks/usePermission";
 import { AddLogs } from "../../../services/apiServices";
-import { AlertTriangle, Calendar, Globe, IndianRupee, Languages, RefreshCw } from "lucide-react";
-import { useModuleAccess } from "../../../hooks/useModuleAccess";
+import { AlertTriangle, Calendar, ChevronLeft, ChevronRight, Globe, IndianRupee, Languages, RefreshCw } from "lucide-react";import { useModuleAccess } from "../../../hooks/useModuleAccess";
 import TranslateInstructionModal from "./TranslateInstructionModal";
 
 /**
@@ -149,77 +148,86 @@ const getFunctionName = (functionObj) => {
 };
 
 const TopTabs = ({ value, onChange, functions, tableLoading }) => {
-  return (
-    <Container>
-      <div className="flex gap-3 overflow-x-auto scrollbar-thin custom-scrollbar scrollbar-thumb-primary/30 scrollbar-track-gray-100 pb-1.5 px-0.5">
-        {functions.map((item) => {
-          const dateTime = item?.functionStartDateTime || "";
-          const parts = dateTime.split(" ");
-          const date = parts[0];
-          const time = parts.length >= 3 ? `${parts[1]} ${parts[2]}` : "";
-          const isActive = value?.id === item.id;
+  const scrollRef = useRef(null);
 
+  const scroll = (direction) => {
+    scrollRef.current?.scrollBy({
+      left: direction === "left" ? -300 : 300,
+      behavior: "smooth",
+    });
+  };
+
+  const splitDateTime = (dt) => {
+    if (!dt) return { date: "", time: "" };
+    const [date, ...rest] = String(dt).trim().split(" ");
+    return { date, time: rest.join(" ") };
+  };
+
+  return (
+    <div className="relative rounded-lg bg-gray-200 py-3">
+      <button
+        type="button"
+        onClick={() => scroll("left")}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white shadow-md hover:bg-gray-700 transition-colors"
+      >
+        <ChevronLeft size={16} />
+      </button>
+
+      <div
+        ref={scrollRef}
+        className="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth px-11"
+      >
+        {functions.map((item) => {
+          const isActive = value?.id === item.id;
           const isDisabled = tableLoading && !isActive;
+          const { date, time } = splitDateTime(item.functionStartDateTime);
 
           return (
-            <button
+            <div
               key={item.id || item.function?.id}
               onClick={() => !isDisabled && onChange(item)}
-              disabled={isDisabled}
-              className={`relative flex-shrink-0 min-w-[160px] rounded-xl px-4 py-3 text-left border transition-all ${
+              className={`flex-shrink-0 min-w-[220px] rounded-md border-l-4 px-4 py-2.5 transition-colors ${
                 isActive
-                  ? "bg-red-50 border-red-200 shadow-sm"
-                  : isDisabled
-                    ? "bg-gray-100 border-gray-100 cursor-not-allowed opacity-60"
-                    : "bg-white border-gray-200 hover:border-red-200 hover:bg-red-50/40"
+                  ? "bg-green-50 border-primary"
+                  : "bg-gray-50 border-gray-300 hover:bg-white"
+              } ${
+                isDisabled ? "opacity-60 pointer-events-none" : "cursor-pointer"
               }`}
             >
-              {/* Left accent bar for active tab */}
-              {isActive && (
-                <span className="absolute left-0 top-0 h-full w-1 rounded-l-xl bg-primary" />
-              )}
-
-              <div className="flex items-start gap-2.5">
-                <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    isActive ? "bg-white text-primary" : "bg-gray-50 text-gray-400"
-                  }`}
-                >
-                  <i className="ki-filled ki-cup text-sm" />
-                </div>
-                <div className="flex flex-col">
-                  <span
-                    className={`text-sm font-bold leading-tight ${
-                      isActive ? "text-primary" : "text-gray-800"
-                    }`}
-                  >
-                    {getFunctionName(item.function)}
-                  </span>
-                  {date && (
-                    <span
-                      className={`text-xs mt-0.5 ${
-                        isActive ? "text-primary/80" : "text-gray-400"
-                      }`}
-                    >
-                      {date}
-                    </span>
-                  )}
-                  {time && (
-                    <span
-                      className={`text-xs ${
-                        isActive ? "text-primary/80" : "text-gray-400"
-                      }`}
-                    >
-                      {time}
-                    </span>
-                  )}
-                </div>
+              <div
+                className={`text-sm font-bold uppercase leading-tight ${
+                  isActive ? "text-primary" : "text-gray-400"
+                }`}
+              >
+                {getFunctionName(item.function)}
               </div>
-            </button>
+              <div
+                className={`mt-1 text-xs font-semibold leading-tight ${
+                  isActive ? "text-gray-800" : "text-gray-300"
+                }`}
+              >
+                {date}
+              </div>
+              <div
+                className={`text-xs font-semibold leading-tight ${
+                  isActive ? "text-gray-800" : "text-gray-300"
+                }`}
+              >
+                {time}
+              </div>
+            </div>
           );
         })}
       </div>
-    </Container>
+
+      <button
+        type="button"
+        onClick={() => scroll("right")}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white shadow-md hover:bg-gray-700 transition-colors"
+      >
+        <ChevronRight size={16} />
+      </button>
+    </div>
   );
 };
 
@@ -813,7 +821,7 @@ const TableHeader = ({
   return (
     <div
       className="grid grid-cols-12 items-center gap-2 border-b border-gray-200 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 bg-gray-50 sticky z-10 rounded-t-xl"
-      style={{ top: "220px" }}
+      style={{ top: "150px" }}
     >
       {/* Name — col 1-3 */}
       <div className="col-span-3 text-left">
@@ -1164,7 +1172,7 @@ const FunctionSectionLabel = ({ functionName, functionDateTime, pax }) => {
   return (
     <div
       className="sticky bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-primary px-5 py-3 shadow-sm"
-      style={{ top: "268px", zIndex: 4 }} // ← lowered zIndex below TableHeader (z-10)
+      style={{ top: "198px", zIndex: 4 }}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -3423,76 +3431,78 @@ rows.forEach((r, i) => {
           </div>
         </div>
       )}
-      <Container>
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center gap-6">
-            <h2 className="text-xl text-black font-semibold">
-              3. Menu Execution
-            </h2>
+      <div className="flex flex-col w-full custom-scrollbar" style={{ height: "100vh", overflow: "hidden" }}>
+        <div className="flex-1 overflow-y-auto">
+          <Container>
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center gap-6">
+                <h2 className="text-xl text-black font-semibold">
+                  3. Menu Execution
+                </h2>
 
-           <div className="flex gap-2">
-  {permMenuPlanning.view && (
-    <button
-      onClick={() =>
-        handleNavigateWithWarning(`/menu-preparation/${eventId}`)
-      }
-      className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm font-semibold hover:border-gray-400 transition-colors"
-    >
-      <i className="ki-filled ki-menu text-primary text-sm"></i>
-      2. Menu Planning
-    </button>
-  )}
+               <div className="flex gap-2">
+      {permMenuPlanning.view && (
+        <button
+          onClick={() =>
+            handleNavigateWithWarning(`/menu-preparation/${eventId}`)
+          }
+          className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm font-semibold hover:border-gray-400 transition-colors"
+        >
+          <i className="ki-filled ki-menu text-primary text-sm"></i>
+          2. Menu Planning
+        </button>
+      )}
 
-  {permRawMaterial.view && (
-    <button
-      className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm font-semibold hover:border-gray-400 transition-colors"
-      onClick={() =>
-        handleNavigateWithWarning(
-          `/raw-material-allocation/${eventId}`,
-        )
-      }
-    >
-      <i className="ki-filled ki-gift text-primary text-sm"></i>
-      4. Raw Material Distribution
-    </button>
-  )}
+      {permRawMaterial.view && (
+        <button
+          className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm font-semibold hover:border-gray-400 transition-colors"
+          onClick={() =>
+            handleNavigateWithWarning(
+              `/raw-material-allocation/${eventId}`,
+            )
+          }
+        >
+          <i className="ki-filled ki-gift text-primary text-sm"></i>
+          4. Raw Material Distribution
+        </button>
+      )}
 
-  {permAgencyDistribution.view && (
-    <button
-      className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm font-semibold hover:border-gray-400 transition-colors"
-      onClick={() =>
-        handleNavigateWithWarning(
-          `/labour-and-other-management/${eventId}`,
-        )
-      }
-    >
-      <i className="ki-filled ki-gift text-primary text-sm"></i>
-      5. Agency Distribution
-    </button>
-  )}
+      {permAgencyDistribution.view && (
+        <button
+          className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm font-semibold hover:border-gray-400 transition-colors"
+          onClick={() =>
+            handleNavigateWithWarning(
+              `/labour-and-other-management/${eventId}`,
+            )
+          }
+        >
+          <i className="ki-filled ki-gift text-primary text-sm"></i>
+          5. Agency Distribution
+        </button>
+      )}
 
-  {permPerDishCosting.view && (
-    <button
-      className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm font-semibold hover:border-gray-400 transition-colors"
-      onClick={() =>
-        handleNavigateWithWarning(`/dish-costing/${eventId}`)
-      }
-    >
-      <i className="ki-filled ki-grid text-primary text-sm"></i>
-      6. Per Dish-costing
-    </button>
-  )}
-</div>
-            <button
-              onClick={() => navigate("/")} // OR navigate('/calendar')
-              className="btn border border-gray-300 text-gray-700 bg-white font-semibold hover:bg-gray-100"
-            >
-              <Calendar size={16} /> Back to Calendar
-            </button>
-          </div>
-        </div>
+      {permPerDishCosting.view && (
+        <button
+          className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm font-semibold hover:border-gray-400 transition-colors"
+          onClick={() =>
+            handleNavigateWithWarning(`/dish-costing/${eventId}`)
+          }
+        >
+          <i className="ki-filled ki-grid text-primary text-sm"></i>
+          6. Per Dish-costing
+        </button>
+      )}
+    </div>
+                <button
+                  onClick={() => navigate("/")} // OR navigate('/calendar')
+                  className="btn border border-gray-300 text-gray-700 bg-white font-semibold hover:bg-gray-100"
+                >
+                  <Calendar size={16} /> Back to Calendar
+                </button>
+              </div>
+            </div>
 
-        <div className=" card min-w-full bg-white border border-gray-200 shadow-sm rounded-xl mb-5">
+            <div className=" card min-w-full bg-white border border-gray-200 shadow-sm rounded-xl mb-5">
           <div className="flex flex-wrap items-center justify-between px-5 py-4 gap-4">
             {/* Event Info Grid */}
             <div className="flex flex-wrap gap-6 flex-1">
@@ -3643,17 +3653,17 @@ rows.forEach((r, i) => {
 
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-7 flex flex-col">
-            <div className="bg-[#FAFAFA] p-3 rounded-lg mb-3">
-              <TopTabs
-                value={activeFunction}
-                onChange={handleFunctionChange}
-                tableLoading={tableLoading}
-                functions={eventData?.eventFunctions || []}
-              />
-            </div>
+          <div className="mb-3">
+  <TopTabs
+    value={activeFunction}
+    onChange={handleFunctionChange}
+    tableLoading={tableLoading}
+    functions={eventData?.eventFunctions || []}
+  />
+</div>
             <div
               className="sticky z-10 bg-white pb-2 rounded-lg shadow-sm mb-3"
-              style={{ top: "70px" }}
+              style={{ top: "0px" }}
             >
             
 
@@ -3833,8 +3843,8 @@ rows.forEach((r, i) => {
           </div>
 
           <div className="col-span-3">
-            <div className="sticky bg-white " style={{ top: "70px" }}>
-              <div className="max-h-[calc(100vh-100px)] overflow-y-auto no-scrollbar">
+            <div className="sticky bg-white " style={{ top: "0px" }}>
+              <div className="max-h-[calc(100vh-30px)] overflow-y-auto no-scrollbar">
                 <OrderSummary
   groups={orderSummaryGroups}
   loading={menuLoading}
@@ -4004,7 +4014,9 @@ rows.forEach((r, i) => {
           setIsModalOpen={setIsAllCustomerToogleOpen}
           onEventSelect={handleEventSelect}
         />
-      </Container>
+          </Container>
+        </div>
+      </div>
       {isSaving && (
         <div
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center"

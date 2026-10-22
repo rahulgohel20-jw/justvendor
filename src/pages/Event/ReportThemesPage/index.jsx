@@ -142,7 +142,7 @@ const ReportThemes = () => {
                   e.stopPropagation(); // Prevent navigation when clicking View PDF
                   generatePDF(theme);
                 }}
-                className="absolute top-2 right-2 bg-white/80 hover:bg-white text-[#005BA8] hover:text-[#004C8C] p-2 rounded-full shadow-md transition"
+                className="absolute top-2 right-2 bg-white/80 hover:bg-white text-primary p-2 rounded-full shadow-md transition"
                 title="View PDF"
               >
                 <svg
@@ -177,7 +177,7 @@ const ReportThemes = () => {
 
               {/* Title */}
               <div className="px-5 py-4 text-center bg-white">
-                <h3 className="text-[17px] font-semibold text-[#002D62] leading-snug tracking-wide">
+                <h3 className="text-[17px] font-semibold text-primary leading-snug tracking-wide">
                   {theme.title}
                 </h3>
               </div>
@@ -189,8 +189,7 @@ const ReportThemes = () => {
         <div className="flex justify-center mt-8">
           <button
             onClick={() => setShowMore(!showMore)}
-            className="bg-[#005BA8] text-white px-6 py-2 rounded-full shadow hover:bg-[#004C8C] transition"
-          >
+            className="bg-primary text-white px-6 py-2 rounded-full shadow hover:bg-primary-active transition"          >
             {showMore ? "Show Less" : "Show More"}
           </button>
         </div>
@@ -201,7 +200,7 @@ const ReportThemes = () => {
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-2 sm:p-4">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-6xl h-[95vh] sm:h-[90vh] overflow-hidden relative flex flex-col">
             <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-sm sm:text-lg font-semibold text-[#002D62] truncate pr-2">
+              <h3 className="text-sm sm:text-lg font-semibold text-primary truncate pr-2">
                 {selectedTheme.title}
               </h3>
               <button
@@ -230,8 +229,7 @@ const ReportThemes = () => {
             <div className="flex-1 overflow-hidden bg-gray-100 flex items-center justify-center">
               {isGenerating ? (
                 <div className="text-center">
-                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#005BA8] border-t-transparent mb-4"></div>
-                  <p className="text-gray-600">Generating PDF...</p>
+                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mb-4"></div>                  <p className="text-gray-600">Generating PDF...</p>
                 </div>
               ) : pdfUrl ? (
                 <iframe

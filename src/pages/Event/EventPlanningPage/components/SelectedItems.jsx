@@ -569,7 +569,7 @@ useEffect(() => {
                 {(isItemAddons || item.itemSpace > 0 || subItem || item.itemHeading || isDeleted) && (
                   <div className="flex flex-wrap items-center gap-1 mt-1">
                     {isItemAddons && (
-                      <span className="text-[9px] font-semibold bg-blue-100 text-primary border border-blue-300 px-1.5 py-0.5 rounded-full leading-none">
+                      <span className="text-[9px] font-semibold bg-primary text-primary border border-blue-300 px-1.5 py-0.5 rounded-full leading-none">
                         Add-on
                       </span>
                     )}
@@ -1609,7 +1609,7 @@ return (
                                     </span>
                                   )}
                                   {addonState[catName]?.cat && (
-                                    <span className="text-[10px] font-semibold bg-blue-100 text-primary border border-blue-300 px-1.5 py-0.5 rounded-full leading-none">
+                                    <span className="text-[10px] font-semibold bg-primary text-primary border border-blue-300 px-1.5 py-0.5 rounded-full leading-none">
                                       Add-on
                                     </span>
                                   )}

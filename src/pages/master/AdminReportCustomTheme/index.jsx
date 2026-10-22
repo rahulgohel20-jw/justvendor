@@ -55,7 +55,7 @@ const AdminReportCustomThem = () => {
     setIsLoading(true);
     try {
       const response = await GetAllCustomThemeByUserId(userId);
-     
+
 
       if (response?.data?.success && response?.data?.data) {
         // Map the response to extract templateMaster data
@@ -129,7 +129,7 @@ const AdminReportCustomThem = () => {
     : currentTemplates.slice(0, 8);
 
   const openPDF = (theme) => {
-  
+
 
     if (!theme.dummyPdf) {
       Swal.fire({
@@ -143,7 +143,7 @@ const AdminReportCustomThem = () => {
     setIsGenerating(true);
     setSelectedTheme(theme);
 
-  
+
 
     let pdf;
 
@@ -153,7 +153,7 @@ const AdminReportCustomThem = () => {
       pdf = theme.dummyPdf;
     }
 
-   
+
 
     setTimeout(() => {
       setPdfUrl(pdf);
@@ -251,7 +251,7 @@ const AdminReportCustomThem = () => {
         },
         modal: {
           ondismiss: function () {
-            
+
           },
         },
       };
@@ -302,22 +302,20 @@ const AdminReportCustomThem = () => {
               setActiveTab("theme");
               setShowMore(false);
             }}
-            className={`px-6 py-3 font-medium text-sm transition-colors relative ${
-              activeTab === "theme"
-                ? "text-[#005BA8] border-b-2 border-[#005BA8]"
-                : "text-gray-500 hover:text-gray-700"
-            }`}
+            className={`px-6 py-3 font-medium text-sm transition-colors relative ${activeTab === "theme"
+              ? "text-primary border-b-2 border-primary"
+              : "text-gray-500 hover:text-gray-700"
+              }`}
           >
             <FormattedMessage
               id="ADMIN.REPORT.THEMES"
               defaultMessage="Themes"
             />{" "}
             <span
-              className={`ml-2 px-2 py-0.5 text-xs rounded-full ${
-                activeTab === "theme"
-                  ? "bg-[#005BA8] text-white"
-                  : "bg-gray-200 text-gray-600"
-              }`}
+              className={`ml-2 px-2 py-0.5 text-xs rounded-full ${activeTab === "theme"
+                ? "bg-primary text-white"
+                : "bg-gray-200 text-gray-600"
+                }`}
             >
               {themeTemplates.length}
             </span>
@@ -327,11 +325,10 @@ const AdminReportCustomThem = () => {
               setActiveTab("nameplate");
               setShowMore(false);
             }}
-            className={`px-6 py-3 font-medium text-sm transition-colors relative ${
-              activeTab === "nameplate"
-                ? "text-[#005BA8] border-b-2 border-[#005BA8]"
-                : "text-gray-500 hover:text-gray-700"
-            }`}
+            className={`px-6 py-3 font-medium text-sm transition-colors relative ${activeTab === "nameplate"
+              ? "text-[#005BA8] border-b-2 border-primary"
+              : "text-gray-500 hover:text-gray-700"
+              }`}
           >
             <FormattedMessage
               id="ADMIN.REPORT.NAMEPLATES"
@@ -339,11 +336,10 @@ const AdminReportCustomThem = () => {
             />
 
             <span
-              className={`ml-2 px-2 py-0.5 text-xs rounded-full ${
-                activeTab === "nameplate"
-                  ? "bg-[#005BA8] text-white"
-                  : "bg-gray-200 text-gray-600"
-              }`}
+              className={`ml-2 px-2 py-0.5 text-xs rounded-full ${activeTab === "nameplate"
+                ? "bg-primary text-white"
+                : "bg-gray-200 text-gray-600"
+                }`}
             >
               {nameplateTemplates.length}
             </span>
@@ -353,7 +349,7 @@ const AdminReportCustomThem = () => {
         {isLoading ? (
           <div className="flex items-center justify-center py-20">
             <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#005BA8] border-t-transparent mb-4"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mb-4"></div>
               <p className="text-gray-600">
                 <FormattedMessage
                   id="COMMON.LOADING_TEMPLATES"
@@ -440,7 +436,7 @@ const AdminReportCustomThem = () => {
                         e.stopPropagation();
                         openPDF(theme);
                       }}
-                      className="absolute top-2 right-2 bg-white/90 hover:bg-white text-[#005BA8] hover:text-[#004C8C] p-2 rounded-full shadow-md transition z-30"
+                      className="absolute top-2 right-2 bg-white/90 hover:bg-white text-primary hover:text-primary-active p-2 rounded-full shadow-md transition z-30"
                       title="View PDF"
                     >
                       <svg
@@ -473,7 +469,7 @@ const AdminReportCustomThem = () => {
                           e.stopPropagation();
                           handlePayment(theme);
                         }}
-                        className="bg-[#005BA8] hover:bg-[#004C8C] text-white px-8 py-3 rounded-full shadow-lg font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                        className="bg-primary hover:bg-primary-active text-white px-8 py-3 rounded-full shadow-lg font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -553,7 +549,7 @@ const AdminReportCustomThem = () => {
               <div className="flex justify-center mt-8">
                 <button
                   onClick={() => setShowMore(!showMore)}
-                  className="bg-[#005BA8] text-white px-6 py-2 rounded-full shadow hover:bg-[#004C8C] transition"
+                  className="bg-primary text-white px-6 py-2 rounded-full shadow hover:bg-[#004C8C] transition"
                 >
                   <FormattedMessage
                     id={showMore ? "COMMON.SHOW_LESS" : "COMMON.SHOW_MORE"}
@@ -604,7 +600,7 @@ const AdminReportCustomThem = () => {
             <div className="flex-1 overflow-hidden bg-gray-100 flex items-center justify-center">
               {isGenerating ? (
                 <div className="text-center">
-                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#005BA8] border-t-transparent mb-4"></div>
+                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mb-4"></div>
                   <p className="text-gray-600">Loading PDF...</p>
                 </div>
               ) : pdfUrl ? (

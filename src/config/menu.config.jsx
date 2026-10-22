@@ -24,96 +24,96 @@ export const allMenuItems = (navigate) => {
       pageName: "Dashboard",
     },
     {
-  title: <FormattedMessage id="COMMON.EVENTS" defaultMessage="Events" />,
-  icon: "ki-filled ki-calendar-tick text-primary text-lg",
-  children: [
-    {
-      title: (
-        <div className="w-full flex justify-between items-center">
-          <FormattedMessage id="COMMON.EVENT_LIST" defaultMessage="Over View" />
-          <span className="text-primary text-[12px] p-1 rounded-md cursor-pointer transition-colors">
-            Coming Soon
-          </span>
-        </div>
-      ),
-      pageName: "Over View",
-    },
-    {
-      title: <FormattedMessage id="COMMON.CALENDAR" defaultMessage="Calendar" />,
-      pageName: "Calendar",
-      path: "/",
-    },
-    {
-      title: <FormattedMessage id="COMMON.CALENDAR" defaultMessage="Inquiry List" />,
-      pageName: "Inquiry",
-      path: "/inquiry",
-    },
-    {
-      title: <FormattedMessage id="COMMON.EVENT_LIST" defaultMessage="Event List" />,
-      pageName: "Event List",
-      path: "/event",
-    },
+      title: <FormattedMessage id="COMMON.EVENTS" defaultMessage="Events" />,
+      icon: "ki-filled ki-calendar-tick text-primary text-lg",
+      children: [
+        {
+          title: (
+            <div className="w-full flex justify-between items-center">
+              <FormattedMessage id="COMMON.EVENT_LIST" defaultMessage="Over View" />
+              <span className="text-primary text-[12px] p-1 rounded-md cursor-pointer transition-colors">
+                Coming Soon
+              </span>
+            </div>
+          ),
+          pageName: "Over View",
+        },
+        {
+          title: <FormattedMessage id="COMMON.CALENDAR" defaultMessage="Calendar" />,
+          pageName: "Calendar",
+          path: "/",
+        },
+        {
+          title: <FormattedMessage id="COMMON.CALENDAR" defaultMessage="Inquiry List" />,
+          pageName: "Inquiry",
+          path: "/inquiry",
+        },
+        {
+          title: <FormattedMessage id="COMMON.EVENT_LIST" defaultMessage="Event List" />,
+          pageName: "Event List",
+          path: "/event",
+        },
 
-    
-    // ── continues flat from here instead of nesting under "Event Hub" ──
-    {
-      title: <FormattedMessage id="COMMON.MENU_PLANNING" defaultMessage="Menu Planning" />,
-      pageName: "Menu Planning",
-      path: "/menu-preparation",
-      requiresEvent: true,
+
+        // ── continues flat from here instead of nesting under "Event Hub" ──
+        {
+          title: <FormattedMessage id="COMMON.MENU_PLANNING" defaultMessage="Menu Planning" />,
+          pageName: "Menu Planning",
+          path: "/menu-preparation",
+          requiresEvent: true,
+        },
+        {
+          title: <FormattedMessage id="COMMON.MENU_EXECUTION" defaultMessage="Menu Execution" />,
+          pageName: "Menu Execution",
+          path: "/menu-allocation",
+          requiresEvent: true,
+        },
+        {
+          title: <FormattedMessage id="COMMON.RAW_MATERIAL_DIST" defaultMessage="Raw Material Distribution" />,
+          pageName: "Raw Material Distribution",
+          path: "/raw-material-allocation",
+          requiresEvent: true,
+        },
+        {
+          title: <FormattedMessage id="COMMON.LABOUR" defaultMessage="Labour" />,
+          pageName: "Labour",
+          path: "/labour-and-other-management",
+          requiresEvent: true,
+        },
+        {
+          title: <FormattedMessage id="COMMON.DISH_COSTING" defaultMessage="Per Dish Costing" />,
+          pageName: "Per Dish Costing",
+          path: "/dish-costing",
+          requiresEvent: true,
+        },
+        {
+          title: <FormattedMessage id="COMMON.EVENT_REPORT" defaultMessage="Event Report" />,
+          pageName: "Event Report",
+          path: "/allreports",
+          requiresEvent: true,
+        },
+        {
+          title: <FormattedMessage id="COMMON.QUOTATION" defaultMessage="Quotation" />,
+          pageName: "Quotation",
+          path: "/quotation",
+          requiresEvent: true,
+        },
+        {
+          title: <FormattedMessage id="COMMON.INVOICE" defaultMessage="Invoice" />,
+          pageName: "Invoice",
+          path: "/add-invoice",
+          requiresEvent: true,
+        },
+        {
+          title: <FormattedMessage id="COMMON.EXPENSE" defaultMessage="Expense" />,
+          pageName: "Expense",
+          path: "/expense-management",
+          requiresEvent: true,
+        },
+
+      ],
     },
     {
-      title: <FormattedMessage id="COMMON.MENU_EXECUTION" defaultMessage="Menu Execution" />,
-      pageName: "Menu Execution",
-      path: "/menu-allocation",
-      requiresEvent: true,
-    },
-    {
-      title: <FormattedMessage id="COMMON.RAW_MATERIAL_DIST" defaultMessage="Raw Material Distribution" />,
-      pageName: "Raw Material Distribution",
-      path: "/raw-material-allocation",
-      requiresEvent: true,
-    },
-    {
-      title: <FormattedMessage id="COMMON.LABOUR" defaultMessage="Labour" />,
-      pageName: "Labour",
-      path: "/labour-and-other-management",
-      requiresEvent: true,
-    },
-    {
-      title: <FormattedMessage id="COMMON.DISH_COSTING" defaultMessage="Per Dish Costing" />,
-      pageName: "Per Dish Costing",
-      path: "/dish-costing",
-      requiresEvent: true,
-    },
-    {
-      title: <FormattedMessage id="COMMON.EVENT_REPORT" defaultMessage="Event Report" />,
-      pageName: "Event Report",
-      path: "/allreports",
-      requiresEvent: true,
-    },
-    {
-      title: <FormattedMessage id="COMMON.QUOTATION" defaultMessage="Quotation" />,
-      pageName: "Quotation",
-      path: "/quotation",
-      requiresEvent: true,
-    },
-    {
-      title: <FormattedMessage id="COMMON.INVOICE" defaultMessage="Invoice" />,
-      pageName: "Invoice",
-      path: "/add-invoice",
-      requiresEvent: true,
-    },
-    {
-      title: <FormattedMessage id="COMMON.EXPENSE" defaultMessage="Expense" />,
-      pageName: "Expense",
-      path: "/expense-management",
-      requiresEvent: true,
-    },
-    
-  ],
-},
-  {
       title: (
         <FormattedMessage
           id="COMMON.VENDORSIDEBAR_MASTER"
@@ -121,10 +121,10 @@ export const allMenuItems = (navigate) => {
         />
       ),
       icon: "  text-lg  ki-filled ki-calendar text-primary",
-       path: "/followup-calendar",
+      path: "/followup-calendar",
       pageName: "followup",
       moduleName: "followup",
-  
+
     },
     {
       title: (
@@ -136,14 +136,14 @@ export const allMenuItems = (navigate) => {
       icon: "  text-lg ki-filled ki-users text-primary",
       path: "/master/vendor-master",
       pageName: "Vendor",
-  
+
     },
 
     {
       title: <FormattedMessage id="COMMON.MASTER" defaultMessage="Master" />,
       icon: "  text-lg ki-filled ki-abstract-26 text-primary",
-     
-      moduleName:"Master",
+
+      moduleName: "Master",
       children: [
         {
           title: (
@@ -175,7 +175,7 @@ export const allMenuItems = (navigate) => {
           path: "/master/customers",
           pageName: "Customers",
         },
-       
+
         {
           title: (
             <FormattedMessage
@@ -300,7 +300,7 @@ export const allMenuItems = (navigate) => {
           path: "/Cash-account",
           pageName: "CashOPB",
         },
-       
+
 
         // {
         //   title: (
@@ -356,30 +356,30 @@ export const allMenuItems = (navigate) => {
       ],
     },
 
-     {
-          title: (
-            <FormattedMessage
-              id="COMMON.GUEST_MASTER"
-              defaultMessage="Guest Master"
-            />
-          ),
-          icon: "  text-lg ki-filled ki-people  text-primary",
-          path: "/master/guest",
-          pageName: "Guest Master",
-           moduleName: "Food Taste Festival",
-        },
-  {
-          title: (
-            <FormattedMessage
-              id="COMMON.GUEST_MASTER"
-              defaultMessage="Labour Helper"
-            />
-          ),
-          icon: "  text-lg ki-filled ki-people  text-primary",
-          path: "/master/addlabourhelper",
-          pageName: "kyc",
-           moduleName: "kyc",
-        },
+    {
+      title: (
+        <FormattedMessage
+          id="COMMON.GUEST_MASTER"
+          defaultMessage="Guest Master"
+        />
+      ),
+      icon: "  text-lg ki-filled ki-people  text-primary",
+      path: "/master/guest",
+      pageName: "Guest Master",
+      moduleName: "Food Taste Festival",
+    },
+    {
+      title: (
+        <FormattedMessage
+          id="COMMON.GUEST_MASTER"
+          defaultMessage="Labour Helper"
+        />
+      ),
+      icon: "  text-lg ki-filled ki-people  text-primary",
+      path: "/master/addlabourhelper",
+      pageName: "kyc",
+      moduleName: "kyc",
+    },
 
     {
       title: (
@@ -566,7 +566,7 @@ export const allMenuItems = (navigate) => {
           path: "/master/category-image",
           pageName: "CategoryImage",
         },
-      
+
 
         {
           title: (
@@ -585,7 +585,7 @@ export const allMenuItems = (navigate) => {
         <FormattedMessage id="COMMON.DECOR_MASTER" defaultMessage="Decor Master" />
       ),
       icon: "  text-lg ki-filled ki-additem text-primary",
-      moduleName:"Decor",
+      moduleName: "Decor",
       children: [
         {
           title: (
@@ -597,8 +597,8 @@ export const allMenuItems = (navigate) => {
           path: "/master/decor-category",
           pageName: "Decor Category",
         },
-      
-      
+
+
 
         {
           title: (
@@ -655,36 +655,36 @@ export const allMenuItems = (navigate) => {
       icon: "ki-filled ki-book-open text-primary",
       moduleName: "Assign Manager",
       children: [
-        
+
         {
-      title: (
-        <FormattedMessage
-          id="COMMON.ASSIGN_TASK"
-          defaultMessage="Assign Task"
-        />
-      ),
-      
-      path: "/assigntask",
-      pageName: "Assign Manager",
-      
-    },
+          title: (
+            <FormattedMessage
+              id="COMMON.ASSIGN_TASK"
+              defaultMessage="Assign Task"
+            />
+          ),
+
+          path: "/assigntask",
+          pageName: "Assign Manager",
+
+        },
         {
-      title: (
-        <FormattedMessage
-          id="COMMON.CUSTOM_MANAGER_TASK_MASTER"
-          defaultMessage="Manager Task Master"
-        />
-      ),
-      
-      path: "/managertaskmaster",
-      pageName: "Manager Task Master",
-      
-    },
+          title: (
+            <FormattedMessage
+              id="COMMON.CUSTOM_MANAGER_TASK_MASTER"
+              defaultMessage="Manager Task Master"
+            />
+          ),
+
+          path: "/managertaskmaster",
+          pageName: "Manager Task Master",
+
+        },
       ],
     },
-  
- 
-     {
+
+
+    {
       title: (
         <FormattedMessage
           id="COMMON.CAPTAIN_RECIPES"
@@ -734,7 +734,7 @@ export const allMenuItems = (navigate) => {
         />
       ),
       icon: " ki-filled ki-document text-primary",
-      
+
       moduleName: "Reports",
       children: [
         // {
@@ -769,7 +769,7 @@ export const allMenuItems = (navigate) => {
     {
       title: <FormattedMessage id="COMMON.SALES" defaultMessage="Sales" />,
       icon: "  text-lg ki-filled ki-graph-up text-primary",
-       moduleName: "Sales",
+      moduleName: "Sales",
       children: [
         {
           title: (
@@ -796,7 +796,7 @@ export const allMenuItems = (navigate) => {
         <FormattedMessage
           id="COMMONSIDEBAR.CONFIGURATION"
           defaultMessage="Configuration"
-          
+
         />
       ),
       icon: "  text-lg ki-filled ki-setting text-primary",
@@ -806,7 +806,7 @@ export const allMenuItems = (navigate) => {
         {
           title: (
             <FormattedMessage
-id="COMMON.ITEMRAWMATERIALUNITCHANGE"              defaultMessage="Item Raw Material Unit Change"
+              id="COMMON.ITEMRAWMATERIALUNITCHANGE" defaultMessage="Item Raw Material Unit Change"
             />
           ),
           path: "/unitchange",
@@ -823,16 +823,16 @@ id="COMMON.ITEMRAWMATERIALUNITCHANGE"              defaultMessage="Item Raw Mate
           pageName: "Raw Material Change",
         },
 
-        {
-          title: (
-            <FormattedMessage
-              id="COMMON.CROCKERYCONFIGURATION"
-              defaultMessage="Crockery Configuration"
-            />
-          ),
-          path: "/configuration/CrockeryConfiguration",
-          pageName: "Crockery Configuration",
-        },
+        // {
+        //   title: (
+        //     <FormattedMessage
+        //       id="COMMON.CROCKERYCONFIGURATION"
+        //       defaultMessage="Crockery Configuration"
+        //     />
+        //   ),
+        //   path: "/configuration/CrockeryConfiguration",
+        //   pageName: "Crockery Configuration",
+        // },
         {
           title: (
             <FormattedMessage
@@ -876,38 +876,38 @@ id="COMMON.ITEMRAWMATERIALUNITCHANGE"              defaultMessage="Item Raw Mate
         },
       ],
     },
-{
-  title: (
-    <a
-      href={`https://crm.justcatering.in/sso?t=${encodeURIComponent(
-        localStorage.getItem("userToken") || ""
-      )}`}
-      target="_blank"
-     
-      className="flex items-center w-full"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <FormattedMessage id="COMMON.CRM" defaultMessage="CRM" />
-      <span className="ml-2 rounded bg-primary px-2 py-0.5 text-xs text-white">
-        PRO
-      </span>
-    </a>
-  ),
-  icon: "ki-filled ki-security-user text-lg text-primary",
-  path: "#",
-  pageName: "CRM",
-  moduleName: "CRM",
-  alwaysVisible: true,
-},
     {
-     title: (
-    <div className="w-full flex justify-between items-center">
-      <FormattedMessage
-        id="COMMONSIDEBAR.ACCOUNT"
-        defaultMessage="Account"
-      />
-    </div>
-  ),
+      title: (
+        <a
+          href={`https://crm.justcatering.in/sso?t=${encodeURIComponent(
+            localStorage.getItem("userToken") || ""
+          )}`}
+          target="_blank"
+
+          className="flex items-center w-full"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <FormattedMessage id="COMMON.CRM" defaultMessage="CRM" />
+          <span className="ml-2 rounded bg-primary px-2 py-0.5 text-xs text-white">
+            PRO
+          </span>
+        </a>
+      ),
+      icon: "ki-filled ki-security-user text-lg text-primary",
+      path: "#",
+      pageName: "CRM",
+      moduleName: "CRM",
+      alwaysVisible: true,
+    },
+    {
+      title: (
+        <div className="w-full flex justify-between items-center">
+          <FormattedMessage
+            id="COMMONSIDEBAR.ACCOUNT"
+            defaultMessage="Account"
+          />
+        </div>
+      ),
       icon: "ki-filled ki-bank text-primary",
       pageName: "Account",
       moduleName: "Account",
@@ -2038,7 +2038,7 @@ export const superAdminMenuItems = [
     title: (
       <FormattedMessage id="COMMON.MEMBER_LIST" defaultMessage="Super Admin Account " />
     ),
-    moduleName:"SuperAdminAccount",
+    moduleName: "SuperAdminAccount",
     icon: "ki-filled ki-user text-primary",
     children: [
       // {
@@ -2061,16 +2061,16 @@ export const superAdminMenuItems = [
       //   path: "/SuperAdminAccountLedger",
       //   pageName: "AccountLedger",
       // },
-       {
-          title: (
-            <FormattedMessage
-              id="COMMON.CHANGESIDEARRAWMATIRAL"
-              defaultMessage="Account Ledger"
-            />
-          ),
-          path: "/account",
-          pageName: "Account Ledger",
-        },
+      {
+        title: (
+          <FormattedMessage
+            id="COMMON.CHANGESIDEARRAWMATIRAL"
+            defaultMessage="Account Ledger"
+          />
+        ),
+        path: "/account",
+        pageName: "Account Ledger",
+      },
       {
         title: (
           <FormattedMessage

@@ -591,9 +591,16 @@ if (activeTab === "chef") {
         </Tabs>
 
         <div className="flex justify-between pt-4 mb-6">
-          <Button onClick={handlePrevious}>Previous</Button>
-          <Button
-            type="primary"
+          <button
+            type="button"
+            onClick={handlePrevious}
+            className="btn btn-light h-10 px-6 rounded-md hover:bg-gray-200"
+          >
+            Previous
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary h-10 px-6 rounded-md hover:bg-primary-active"
             onClick={async () => {
               
               setIsSaveOnly(true);
@@ -615,7 +622,7 @@ if (activeTab === "chef") {
             }}
           >
             {isEdit ? "Update" : "Save"}
-          </Button>
+          </button>
         </div>
       </Form>
 

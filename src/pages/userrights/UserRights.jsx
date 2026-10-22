@@ -19,13 +19,13 @@ const UserRights = () => {
   const [selectedRole, setSelectedRole] = useState(null);
   const [isPermissionModalOpen, setIsPermissionModalOpen] = useState(false);
   const [isReportRightsModalOpen, setIsReportRightsModalOpen] = useState(false);
-const [selectedReportRole, setSelectedReportRole] = useState(null);
+  const [selectedReportRole, setSelectedReportRole] = useState(null);
 
   const userId = localStorage.getItem("userId");
-const handleOpenReportRights = (role) => {
-  setSelectedReportRole(role);
-  setIsReportRightsModalOpen(true);
-};
+  const handleOpenReportRights = (role) => {
+    setSelectedReportRole(role);
+    setIsReportRightsModalOpen(true);
+  };
 
 
 
@@ -125,20 +125,20 @@ const handleOpenReportRights = (role) => {
     {
       header: "Rights",
       cell: ({ row }) => (
-       <div className="flex items-center gap-2">
-        <button
-          className="btn btn-primary"
-          onClick={() => handleOpenPermission(row.original)}
-        >
-          Rights
-        </button>
-        <button
-          className="btn btn-success"
-          onClick={() => handleOpenReportRights(row.original)}
-        >
-          Report Rights
-        </button>
-      </div>
+        <div className="flex items-center gap-2">
+          <button
+            className="btn btn-primary"
+            onClick={() => handleOpenPermission(row.original)}
+          >
+            Rights
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={() => handleOpenReportRights(row.original)}
+          >
+            Report Rights
+          </button>
+        </div>
       ),
     },
   ];
@@ -159,14 +159,14 @@ const handleOpenReportRights = (role) => {
           refreshData={fetchRoles}
         />
         <ReportRightsModal
-  isOpen={isReportRightsModalOpen}
-  onClose={() => setIsReportRightsModalOpen(false)}
-  role={selectedReportRole}
-  onSave={(rights) => {
-  
-    // call your save API here
-  }}
-/>
+          isOpen={isReportRightsModalOpen}
+          onClose={() => setIsReportRightsModalOpen(false)}
+          role={selectedReportRole}
+          onSave={(rights) => {
+
+            // call your save API here
+          }}
+        />
       </Container>
     </Fragment>
   );

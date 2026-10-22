@@ -1,5 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {
+  CalendarClock,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  FolderKanban,
+  Layers,
+  MapPin,
+  PartyPopper,
+  UserRound,
+  UtensilsCrossed,
+} from "lucide-react";
 import { CustomModal } from "@/components/custom-modal/CustomModal";
 import NamePlateReport from "./NamePlateReport";
 import { toAbsoluteUrl } from "@/utils";
@@ -404,18 +416,18 @@ else if (mode === "allocation" && !ischef && !isOutside) {
         onClose={() => setIsSelectMenuReport(false)}
         footer={null}
         title={
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center">
-              <i className="ki-filled ki-document text-white text-xl"></i>
-            </div>
-            <span className="text-xl font-bold text-gray-800">
-              <FormattedMessage
-                id="REPORTS.SELECT_REPORT_TYPE"
-                defaultMessage="Select Report Type"
-              />
-            </span>
-          </div>
-        }
+  <div className="flex items-center gap-3">
+    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+      <FileText className="w-6 h-6 text-primary" strokeWidth={2} />
+    </div>
+    <span className="text-xl font-bold text-gray-800">
+      <FormattedMessage
+        id="REPORTS.SELECT_REPORT_TYPE"
+        defaultMessage="Select Report Type"
+      />
+    </span>
+  </div>
+}
         width={1100}
       >
         <div className="p-6">
@@ -423,66 +435,43 @@ else if (mode === "allocation" && !ischef && !isOutside) {
           {!isOutside && !ischef &&  mode !== "package" &&(
             <div className="bg-gray-200 rounded-2xl p-6 mb-6 border border-gray-400">
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <InfoItem
-                  icon={toAbsoluteUrl("/media/icons/partyname.png")}
-                  label={intl.formatMessage({
-                    id: "EVENT_MENU_ALLOCATION.PARTY_NAME",
-                    defaultMessage: "Party Name",
-                  })}
-                  value={
-                    getLangValue(eventData?.party, "name", activeLang) || "-"
-                  }
-                />
+              <InfoItem
+  icon={UserRound}
+  label={intl.formatMessage({ id: "EVENT_MENU_ALLOCATION.PARTY_NAME", defaultMessage: "Party Name" })}
+  value={getLangValue(eventData?.party, "name", activeLang) || "-"}
+/>
 
-                <InfoItem
-                  icon={toAbsoluteUrl("/media/icons/eventname.png")}
-                  label={intl.formatMessage({
-                    id: "EVENT_MENU_ALLOCATION.EVENT_NAME",
-                    defaultMessage: "Event Name",
-                  })}
-                  value={
-                    getLangValue(eventData?.eventType, "name", activeLang) ||
-                    "-"
-                  }
-                />
-                <InfoItem
-                  icon={toAbsoluteUrl("/media/icons/funtionname.png")}
-                  label={intl.formatMessage({
-                    id: "COMMON.FUNCTION",
-                    defaultMessage: "Function",
-                  })}
-                  value={
-                    selectedEventFunction
-                      ? getLangValue(
-                          selectedEventFunction.function,
-                          "name",
-                          activeLang,
-                        )
-                      : activeLang === "hi"
-                        ? "सभी फंक्शन"
-                        : activeLang === "gu"
-                          ? "બધા ફંક્શન"
-                          : "All Function"
-                  }
-                />
-                <InfoItem
-                  icon={toAbsoluteUrl("/media/icons/date&time.png")}
-                  label={intl.formatMessage({
-                    id: "TABLE.EVENT_DATE_TIME",
-                    defaultMessage: "Event Date & Time",
-                  })}
-                  value={eventData?.eventStartDateTime || "-"}
-                />
-                <InfoItem
-                  icon={toAbsoluteUrl("/media/icons/venue.png")}
-                  label={intl.formatMessage({
-                    id: "TABLE.VENUE",
-                    defaultMessage: "Venue",
-                  })}
-                  value={
-                    getLangValue(eventData?.venue, "name", activeLang) || "-"
-                  }
-                />
+<InfoItem
+  icon={PartyPopper}
+  label={intl.formatMessage({ id: "EVENT_MENU_ALLOCATION.EVENT_NAME", defaultMessage: "Event Name" })}
+  value={getLangValue(eventData?.eventType, "name", activeLang) || "-"}
+/>
+
+<InfoItem
+  icon={Layers}
+  label={intl.formatMessage({ id: "COMMON.FUNCTION", defaultMessage: "Function" })}
+  value={
+    selectedEventFunction
+      ? getLangValue(selectedEventFunction.function, "name", activeLang)
+      : activeLang === "hi"
+        ? "सभी फंक्शन"
+        : activeLang === "gu"
+          ? "બધા ફંક્શન"
+          : "All Function"
+  }
+/>
+
+<InfoItem
+  icon={CalendarClock}
+  label={intl.formatMessage({ id: "TABLE.EVENT_DATE_TIME", defaultMessage: "Event Date & Time" })}
+  value={eventData?.eventStartDateTime || "-"}
+/>
+
+<InfoItem
+  icon={MapPin}
+  label={intl.formatMessage({ id: "TABLE.VENUE", defaultMessage: "Venue" })}
+  value={getLangValue(eventData?.venue, "name", activeLang) || "-"}
+/>
               </div>
             </div>
           )}
@@ -568,19 +557,7 @@ else if (mode === "allocation" && !ischef && !isOutside) {
               className="absolute left-[-20px] top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-md border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-all"
               aria-label="Scroll left"
             >
-              <svg
-                className="w-5 h-5 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+              <ChevronLeft className="w-5 h-5 text-primary" strokeWidth={2.4} />
             </button>
 
             {/* Tabs Container */}
@@ -590,39 +567,36 @@ else if (mode === "allocation" && !ischef && !isOutside) {
             >
               {tabs.map((tab) => {
                 const isActive = activeTab === tab.key;
+                const TabIcon =
+                  tab.nameEnglish === "Menu Allocation Theme"
+                    ? FolderKanban
+                    : tab.nameEnglish === "Chef Agency Theme" || tab.nameEnglish === "Outside Agency Theme"
+                      ? UserRound
+                      : tab.nameEnglish === "Name Plate Theme"
+                        ? FileText
+                        : UtensilsCrossed;
 
                 return (
-                  <button
-                    key={tab.key}
-                    onClick={() => handleTabChange(tab.key)}
-                    className={`group relative pb-4 flex items-center gap-3 font-semibold text-lg transition-all flex-shrink-0 whitespace-nowrap
-            ${isActive ? "text-gray-700 hover:text-[#005BA8]" : "text-gray-700 hover:text-[#005BA8]"}
-          `}
-                    style={isActive ? { color: "#005BA8" } : {}}
-                  >
-                    {/* Icon with blue filter when active */}
-                    <img
-                      src={toAbsoluteUrl(tab.img)}
-                      alt={tab.label}
-                      className="w-6 h-6 transition-all duration-300"
-                      style={{
-                        filter: isActive
-                          ? "invert(26%) sepia(95%) saturate(1685%) hue-rotate(192deg) brightness(93%) contrast(101%)"
-                          : "invert(50%) sepia(0%) saturate(0%)",
-                      }}
-                    />
+                 <button
+  key={tab.key}
+  onClick={() => handleTabChange(tab.key)}
+  className={`group relative pb-4 flex items-center gap-3 font-semibold text-lg transition-all flex-shrink-0 whitespace-nowrap hover:text-primary
+    ${isActive ? "text-primary" : "text-gray-700"}`}
+>
+  <TabIcon
+    size={20}
+    strokeWidth={2.2}
+    className={isActive ? "text-primary" : "text-gray-500 group-hover:text-primary"}
+  />
 
-                    {/* Label */}
-                    <span className="max-w-[300px]">{tab.label}</span>
+  <span className="max-w-[300px]">{tab.label}</span>
 
-                    {/* Bottom underline */}
-                    <span
-                      className={`absolute left-0 -bottom-[1px] h-[4px] w-full transition-all duration-300
-              ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
-            `}
-                      style={{ backgroundColor: "#005BA8" }}
-                    />
-                  </button>
+  {/* Bottom underline */}
+  <span
+    className={`absolute left-0 -bottom-[1px] h-[4px] w-full bg-primary transition-all duration-300
+      ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+  />
+</button>
                 );
               })}
             </div>
@@ -636,26 +610,14 @@ else if (mode === "allocation" && !ischef && !isOutside) {
               className="absolute right-[-20px] top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-md border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-all"
               aria-label="Scroll right"
             >
-              <svg
-                className="w-5 h-5 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <ChevronRight className="w-5 h-5 text-primary" strokeWidth={2.4} />
             </button>
           </div>
 
           {/* Dynamic Template Cards */}
           {templatesLoading ? (
             <div className="flex justify-center items-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
           ) : templates.length > 0 ? (
             <div className="space-y-4">
@@ -723,32 +685,20 @@ if (mode === "package" && String(userId) === "359") {
                       key={template.id}
                       className={`
             flex items-center gap-6 bg-white rounded-xl  
-            border-2 ${isActive ? "border-[#005BA8]" : "border-gray-200"}
+            border-2 ${isActive ? "border-primary" : "border-gray-200"}
             shadow-sm hover:shadow-md transition-all duration-300
           `}
                     >
                       <div className="w-24 h-24 flex-shrink-0 rounded-lg flex items-center justify-center overflow-hidden">
-                        {template.frontPage ? (
-                          <div className="w-14 h-14 rounded-lg bg-gray-100 flex items-center justify-center">
-                            <img
-                              src={toAbsoluteUrl("/media/icons/reportcard.png")}
-                              alt={template.name || "Template"}
-                              className="w-8 h-8 object-contain"
-                            />
-                          </div>
-                        ) : (
-                          <img
-                            src={toAbsoluteUrl("/media/icons/reportcard.png")}
-                            alt="Template"
-                            className="w-12 h-12 object-contain"
-                          />
-                        )}
+                        <div className="w-14 h-14 rounded-lg bg-gray-100 flex items-center justify-center">
+                          <FileText className="w-8 h-8 text-primary" strokeWidth={1.8} />
+                        </div>
                       </div>
 
                       <div className="flex-1">
                         <h3
                           className={`text-base font-bold ${
-                            isActive ? "text-[#005BA8]" : "text-gray-800"
+                            isActive ? "text-primary" : "text-gray-800"
                           }`}
                         >
                           {template.name}
@@ -861,14 +811,11 @@ if (mode === "package" && String(userId) === "359") {
   );
 }
 
-const InfoItem = ({ icon, label, value }) => (
+const InfoItem = ({ icon: Icon, label, value }) => (
   <div className="flex items-center gap-3 min-w-[120px]">
-    {/* Icon */}
-    {icon && <img src={icon} alt={label} className="w-5 h-5 object-contain" />}
-
-    {/* Text */}
+    {Icon && <Icon className="w-5 h-5 text-primary flex-shrink-0" strokeWidth={2.2} />}
     <div className="flex flex-col">
-      <span className=" text-black font-bold text-base">{label}</span>
+      <span className="text-black font-bold text-base">{label}</span>
       <span className="text-sm font-semibold text-gray-600">{value}</span>
     </div>
   </div>

@@ -219,12 +219,12 @@ const AddJournalVoucher = () => {
   const usedAccountIds = rows.map((r) => r.accountId);
 
   const fieldClass =
-    "w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all";
+    "w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all";
   const labelClass =
     "text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5 flex items-center gap-1.5";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 p-6 font-sans">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-primary-lighter/30 to-slate-100 p-6 font-sans">
       <div className="mx-auto space-y-5">
         {/* ── Voucher Information Card ── */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-visible">
@@ -291,14 +291,14 @@ const AddJournalVoucher = () => {
           {/* Card Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-blue-600">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-primary">
                 <BookOpen size={17} className="text-white" />
               </div>
-              <h2 className="text-blue-900 font-bold text-base tracking-tight">
+              <h2 className="text-primary font-bold text-base tracking-tight">
                 Voucher Details
               </h2>
               {rows.length > 0 && (
-                <span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-primary-lighter text-primary text-xs font-bold">
                   {rows.length} {rows.length !== 1 ? "entries" : "entry"}
                 </span>
               )}
@@ -376,7 +376,7 @@ const AddJournalVoucher = () => {
             </div>
             <button
               onClick={handleAddRow}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-active transition-colors shadow-sm"
             >
               <Plus size={15} /> Add Row
             </button>
@@ -426,7 +426,7 @@ const AddJournalVoucher = () => {
                   rows.map((row, i) => (
                     <tr
                       key={i}
-                      className="border-b border-slate-50 hover:bg-blue-50/20 transition-colors group"
+                      className="border-b border-slate-50 hover:bg-primary-lighter/20 transition-colors group"
                     >
                       {/* # */}
                       <td className="px-4 py-2 text-xs text-slate-400 font-medium w-8">
@@ -453,8 +453,8 @@ const AddJournalVoucher = () => {
                           className={`w-full px-3 py-1.5 text-sm border rounded-xl text-right transition-all focus:outline-none focus:ring-1
                             ${
                               !row.amount || parseFloat(row.amount) <= 0
-                                ? "border-blue-300 bg-blue-50 text-blue-700 placeholder-blue-400 focus:border-blue-400 focus:ring-blue-200"
-                                : "border-slate-200 bg-white text-slate-800 focus:border-blue-400 focus:ring-blue-200"
+                                ? "border-primary-light bg-primary-lighter text-primary placeholder-primary-light focus:border-primary focus:ring-primary-clarity"
+                                : "border-slate-200 bg-white text-slate-800 focus:border-primary focus:ring-primary-clarity"
                             }`}
                         />
                       </td>
@@ -478,7 +478,7 @@ const AddJournalVoucher = () => {
                             updateRow(i, "particular", e.target.value)
                           }
                           placeholder="Particular…"
-                          className="w-full px-3 py-1.5 text-sm border border-slate-200 bg-white rounded-xl text-slate-800 focus:outline-none focus:ring-1 focus:border-blue-400 focus:ring-blue-200 transition-all"
+                          className="w-full px-3 py-1.5 text-sm border border-slate-200 bg-white rounded-xl text-slate-800 focus:outline-none focus:ring-1 focus:border-primary focus:ring-primary-clarity transition-all"
                         />
                       </td>
 
@@ -511,7 +511,7 @@ const AddJournalVoucher = () => {
                         <span className="text-xs font-bold text-green-700 text-right block">
                           CR: {totalCR.toFixed(2)}
                         </span>
-                        <span className="text-xs font-bold text-blue-700 text-right block">
+                        <span className="text-xs font-bold text-primary text-right block">
                           DR: {totalDR.toFixed(2)}
                         </span>
                       </div>

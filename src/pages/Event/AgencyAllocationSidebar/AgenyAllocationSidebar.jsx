@@ -428,7 +428,7 @@ const handleClose = useCallback(() => {
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                     tab === id
                       ? "bg-primary text-white shadow-sm"
-                      : "bg-red-100 text-primary hover:bg-blue-200"
+                      : "bg-[#ddfae6] text-primary"
                   } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                   aria-selected={tab === id}
                 >

@@ -79,7 +79,7 @@ const SelectWithRefresh = ({ field, form, onAddClick }) => {
       {field.showAddButton && (
         <button
           type="button"
-          className="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-r-xl shadow hover:scale-105 transition"
+          className="w-10 h-10 flex items-center justify-center bg-primary hover:bg-primary-active text-white rounded-r-xl shadow hover:scale-105 transition"
           onClick={() => onAddClick(field.name)}
         >
           <i className="ki-filled ki-plus"></i>

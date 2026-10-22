@@ -287,7 +287,7 @@ const AddContactCategory = ({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary/90 transition"
+                    className="btn btn-primary px-5 py-2 rounded-lg hover:bg-primary-active transition"
                   >
                     {contactCategory ? (
                       <FormattedMessage

@@ -577,10 +577,14 @@ if (data?.data?.success) {
                   {!loading && !error && (
                     <>
                       {!isShowingAllFunctions && singleFunctionInfo && (
-                        <div className="flex items-center gap-6 mb-4">
-                          <button className="btn btn-sm btn-primary w-[100px] flex justify-center mt-3">
-                            {singleFunctionInfo.functionName}
-                          </button>
+  <div className="flex items-center gap-6 mb-4">
+    <button
+      type="button"
+      className="btn btn-sm btn-primary !h-auto min-w-[100px] max-w-[220px] px-4 py-2 mt-3 flex justify-center text-center whitespace-normal leading-tight"
+    >
+      {singleFunctionInfo.functionName}
+    </button>
+    ...
                           <div className="flex flex-col mb-4">
                             <div className="text-[12px] text-gray-600">
                               <FormattedMessage id="SIDEBAR_MODAL.DATE_TIME" defaultMessage="Date and Time" />

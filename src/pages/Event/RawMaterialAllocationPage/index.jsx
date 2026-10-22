@@ -1736,8 +1736,10 @@ const handleSaveRemarksPopup = (updatedRemarks) => {
     );
   }
   return (
-    <Fragment>
-      {blocker.state === "blocked" && (
+    <>
+      <div className="flex h-screen w-full flex-col overflow-hidden">
+      <div className="flex-1 overflow-y-auto custom-scrollbar">
+        {blocker.state === "blocked" && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-xl shadow-xl p-6 max-w-md w-full mx-4">
             <div className="flex items-center gap-3 mb-3">
@@ -2446,6 +2448,8 @@ onChange={(e) => {
           existingMaterials={originalData}
         />
       </Container>
+    </div>
+  </div>
       {isSaving && (
         <div
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center"
@@ -2502,7 +2506,7 @@ onChange={(e) => {
     onSave={handleSaveRemarksPopup}
   />
 )}
-    </Fragment>
+    </>
   );
 };
 
