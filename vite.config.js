@@ -11,7 +11,7 @@ export default defineConfig({
     },
   },
   // base: "/JCX/",
-   base: "/",
+   base: "/just-vendor/",
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
