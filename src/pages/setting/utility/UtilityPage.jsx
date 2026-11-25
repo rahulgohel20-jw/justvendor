@@ -39,6 +39,7 @@ const UtilityPage = () => {
     adjustQuantity: false,
     displayAutoTime: false,
     editRawmaterialQuantityBeforeGenReport: false,
+    quotationFunctionWise: false,
     fontColor: "#FE4444",
     bgColor: "#F3F4F6",
     file: null,
@@ -163,6 +164,7 @@ const UtilityPage = () => {
           displayAutoTime: data.displayAutoTime ?? false,
           editRawmaterialQuantityBeforeGenReport:
             data.editRawmaterialQuantityBeforeGenReport ?? false,
+          quotationFunctionWise: data.quotationFunctionWise ?? false,
           fontColor: data.fontColor || "#FE4444",
           bgColor: data.bgColor || "#F3F4F6",
           file: null,
@@ -305,6 +307,7 @@ const UtilityPage = () => {
         "editRawmaterialQuantityBeforeGenReport",
         formData.editRawmaterialQuantityBeforeGenReport,
       );
+      apiData.append("quotationFunctionWise", formData.quotationFunctionWise);
       apiData.append("fontColor", formData.fontColor);
       apiData.append("bgColor", formData.bgColor);
       apiData.append("user", formData.user);
@@ -866,6 +869,21 @@ const UtilityPage = () => {
                     <FormattedMessage
                       id="SETTING.EDIT_RAW_MATERIAL_QUANTITY_BEFORE_GENERATING_REPORT_TOOLTIP"
                       defaultMessage="It will allow editing the raw material quantity before generating the report."
+                    />
+                  ),
+                },
+                {
+                  field: "quotationFunctionWise",
+                  label: (
+                    <FormattedMessage
+                      id="SETTING.QUOTATION_FUNCTION_WISE"
+                      defaultMessage="Quotation Function Wise / Event Wise"
+                    />
+                  ),
+                  tooltip: (
+                    <FormattedMessage
+                      id="SETTING.QUOTATION_FUNCTION_WISE_TOOLTIP"
+                      defaultMessage="Enable to generate quotations function wise. Disable to generate quotations event wise."
                     />
                   ),
                 },

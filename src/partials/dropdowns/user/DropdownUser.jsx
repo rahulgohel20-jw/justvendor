@@ -52,17 +52,18 @@ const DropdownUser = ({ menuItemRef }) => {
       <div className="flex items-center justify-between px-5 py-1.5 gap-1.5">
         <div className="flex items-center gap-2">
           <img
-            className="size-9 border-2 border-gray-400 rounded-full shrink-0 object-cover"
+            className="size-9 border-2 border-gray-400 rounded-full shrink-0 object-contain"
             src={
               userdata?.logo &&
-              typeof userdata.logo === "string" &&
-              userdata.logo.trim() !== "" &&
-              userdata.logo !== "null" &&
-              userdata.logo !== "undefined" &&
-              !userdata.logo.toLowerCase().includes("/null") &&
-              /\.(jpg|jpeg|png|webp|gif)$/i.test(userdata.logo)
+                typeof userdata.logo === "string" &&
+                userdata.logo.trim() !== "" &&
+                userdata.logo !== "null" &&
+                userdata.logo !== "undefined" &&
+                !userdata.logo.toLowerCase().includes("/null") &&
+                !userdata.logo.toLowerCase().includes("noimage") &&
+                /\.(jpg|jpeg|png|webp|gif)$/i.test(userdata.logo)
                 ? userdata.logo
-                : toAbsoluteUrl("/media/menu/noImage.jpg")
+                : toAbsoluteUrl("/images/monogram.png")
             }
             alt=""
           />

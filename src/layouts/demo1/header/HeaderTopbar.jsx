@@ -18,57 +18,57 @@ import { followupnotiy } from "@/services/apiServices";
 import { useModuleAccess } from "../../../hooks/useModuleAccess";
 
 const PATH_TO_RIGHTS_KEY = {
-  "/master/contact-type":             "Types",
-  "/master/contact-categories":       "Categories",
-  "/master/customers":                "Customers",
-  "/master/vendor-master":            "Vendors",
-  "/master/venue-type":               "Venue",
-  "/master/godown":                   "Godown",
-  "/master/labour-shift":             "Labour Shift",
-  "/master/bank-details":             "Bank Details",
-  "/Cash-account":                    "Cash OPB",
-  "/master/event-type":               "Events",
-  "/master/functions":                "Function",
-  "/master/meals":                    "Food Prefrence",
-  "/master/custom-package":           "Menu Packages",
-  "/quotation-function":              "Quotation Function",
-  "/terms":                           "Terms & Condition",
-  "/menuplaaningmaster":              "Menu Planning Master",
-  "/master/banquet-master":           "Banquet Master",
-  "/master/banquet-shift":            "Banquet Shift",
-  "/event-remark":                    "Event Remark",
-  "/master/room":                     "Room Master",
-  "/master/menu-category":            "Main Category",
-  "/master/menu-sub-category":        "Sub Category",
-  "/master/category-image":           "Main Category Theme",
-  "/master/menu-item":                "Items With Recipe",
+  "/master/contact-type": "Types",
+  "/master/contact-categories": "Categories",
+  "/master/customers": "Customers",
+  "/master/vendor-master": "Vendors",
+  "/master/venue-type": "Venue",
+  "/master/godown": "Godown",
+  "/master/labour-shift": "Labour Shift",
+  "/master/bank-details": "Bank Details",
+  "/Cash-account": "Cash OPB",
+  "/master/event-type": "Events",
+  "/master/functions": "Function",
+  "/master/meals": "Food Prefrence",
+  "/master/custom-package": "Menu Packages",
+  "/quotation-function": "Quotation Function",
+  "/terms": "Terms & Condition",
+  "/menuplaaningmaster": "Menu Planning Master",
+  "/master/banquet-master": "Banquet Master",
+  "/master/banquet-shift": "Banquet Shift",
+  "/event-remark": "Event Remark",
+  "/master/room": "Room Master",
+  "/master/menu-category": "Main Category",
+  "/master/menu-sub-category": "Sub Category",
+  "/master/category-image": "Main Category Theme",
+  "/master/menu-item": "Items With Recipe",
   "/master/raw-material-type-master": "Type",
-  "/master/raw-material-master":      "Category",
-  "/master/raw-material":             "Items",
-  "/master/unit":                     "Unit",
-  "/master/rawmaterial-opb":          "Raw Material OPB",
-  "/stock-management/stock-type":     "Stock Type",
-  "/stock-management/purchase":       "Purchase",
-  "/stock-management/purchase-return":"Purchase Return",
-  "/stock-management/automanualpo":   "Auto / Manual PO",
-  "/stock-management/store-po":       "Store Issue",
-  "/stock-management/store-po-return":"Store Issue Return",
-  "/stock-management/chef-requisition":"Chef Requisition",
-  "/stock-management/store-ledger":   "Stock Ledger",
+  "/master/raw-material-master": "Category",
+  "/master/raw-material": "Items",
+  "/master/unit": "Unit",
+  "/master/rawmaterial-opb": "Raw Material OPB",
+  "/stock-management/stock-type": "Stock Type",
+  "/stock-management/purchase": "Purchase",
+  "/stock-management/purchase-return": "Purchase Return",
+  "/stock-management/automanualpo": "Auto / Manual PO",
+  "/stock-management/store-po": "Store Issue",
+  "/stock-management/store-po-return": "Store Issue Return",
+  "/stock-management/chef-requisition": "Chef Requisition",
+  "/stock-management/store-ledger": "Stock Ledger",
   "/stock-management/store-ordering-tickets": "Store Ordering Tickets",
-  "/stock-management/daily-stock-manage":     "Daily Stock Manage",
-  "/stock-management/stock-report":   "Stock Report",
-  "/bank-payment":                    "Debit",
-  "/cash-recipet":                    "Credit",
-  "/journal-voucher":                 "Journal Voucher",
-  "/Payments":                        "Payments",
-  "/account/expense":                 "Expense",
-  "/gst-report":                      "GST Report",
-  "/account":                         "Account Ledger",
-  "/cash/cash-book":                  "Cash Book",
-  "/bank/bank-book":                  "Bank Book",
-  "/master/accountmaster":            "Account Contact",
-  "/master/ExpenseType":              "Income/Expense Type",
+  "/stock-management/daily-stock-manage": "Daily Stock Manage",
+  "/stock-management/stock-report": "Stock Report",
+  "/bank-payment": "Debit",
+  "/cash-recipet": "Credit",
+  "/journal-voucher": "Journal Voucher",
+  "/Payments": "Payments",
+  "/account/expense": "Expense",
+  "/gst-report": "GST Report",
+  "/account": "Account Ledger",
+  "/cash/cash-book": "Cash Book",
+  "/bank/bank-book": "Bank Book",
+  "/master/accountmaster": "Account Contact",
+  "/master/ExpenseType": "Income/Expense Type",
 };
 
 const HEADER_MENUS = [
@@ -80,15 +80,15 @@ const HEADER_MENUS = [
         label: "Master",
         icon: "ki-filled ki-abstract-26",
         items: [
-          { label: "Types",            path: "/master/contact-type",       desc: "Contact types" },
-          { label: "Categories",       path: "/master/contact-categories", desc: "Contact categories" },
-          { label: "Customers",        path: "/master/customers",          desc: "Manage customers" },
-          { label: "Vendors",          path: "/master/vendor-master",      desc: "Manage Vendor" },
-          { label: "Venue",            path: "/master/venue-type",         desc: "Venue types" },
-          { label: "Godown",           path: "/master/godown",             desc: "Godown master" },
-          { label: "Labour Shift",     path: "/master/labour-shift",       desc: "Shift management" },
-          { label: "Bank Details",     path: "/master/bank-details",       desc: "Bank information" },
-          { label: "Cash OPB",         path: "/Cash-account",              desc: "Opening balance" },
+          { label: "Types", path: "/master/contact-type", desc: "Contact types" },
+          { label: "Categories", path: "/master/contact-categories", desc: "Contact categories" },
+          { label: "Customers", path: "/master/customers", desc: "Manage customers" },
+          { label: "Vendors", path: "/master/vendor-master", desc: "Manage Vendor" },
+          { label: "Venue", path: "/master/venue-type", desc: "Venue types" },
+          { label: "Godown", path: "/master/godown", desc: "Godown master" },
+          { label: "Labour Shift", path: "/master/labour-shift", desc: "Shift management" },
+          { label: "Bank Details", path: "/master/bank-details", desc: "Bank information" },
+          { label: "Cash OPB", path: "/Cash-account", desc: "Opening balance" },
         ],
       },
       {
@@ -96,13 +96,13 @@ const HEADER_MENUS = [
         label: "Event Master",
         icon: "ki-filled ki-calendar-tick",
         items: [
-          { label: "Events",               path: "/master/event-type",    desc: "Event types" },
-          { label: "Function",             path: "/master/functions",      desc: "Function types" },
-          { label: "Food Preference",      path: "/master/meals",          desc: "Meal preferences" },
-          { label: "Menu Packages",        path: "/master/custom-package", desc: "Custom packages" },
-          { label: "Quotation Function",   path: "/quotation-function",    desc: "Quotation setup" },
-          { label: "Terms & Condition",    path: "/terms",                 desc: "User terms" },
-          { label: "Menu Planning Master", path: "/menuplaaningmaster",    desc: "Planning config" },
+          { label: "Events", path: "/master/event-type", desc: "Event types" },
+          { label: "Function", path: "/master/functions", desc: "Function types" },
+          { label: "Food Preference", path: "/master/meals", desc: "Meal preferences" },
+          { label: "Menu Packages", path: "/master/custom-package", desc: "Custom packages" },
+          { label: "Quotation Function", path: "/quotation-function", desc: "Quotation setup" },
+          { label: "Terms & Condition", path: "/terms", desc: "User terms" },
+          { label: "Menu Planning Master", path: "/menuplaaningmaster", desc: "Planning config" },
         ],
       },
     ],
@@ -116,9 +116,9 @@ const HEADER_MENUS = [
         icon: "ki-filled ki-user",
         items: [
           { label: "Banquet Master", path: "/master/banquet-master", desc: "Banquet configuration" },
-          { label: "Banquet Shift",  path: "/master/banquet-shift",  desc: "Shift management" },
-          { label: "Event Remark",   path: "/event-remark",          desc: "Event remarks" },
-          { label: "Room Master",    path: "/master/room",           desc: "Room configuration" },
+          { label: "Banquet Shift", path: "/master/banquet-shift", desc: "Shift management" },
+          { label: "Event Remark", path: "/event-remark", desc: "Event remarks" },
+          { label: "Room Master", path: "/master/room", desc: "Room configuration" },
         ],
       },
     ],
@@ -131,10 +131,10 @@ const HEADER_MENUS = [
         label: "Menu Master",
         icon: "ki-filled ki-additem",
         items: [
-          { label: "Main Category",       path: "/master/menu-category",     desc: "Menu categories" },
-          { label: "Sub Category",        path: "/master/menu-sub-category", desc: "Sub-categories" },
-          { label: "Main Category Theme", path: "/master/category-image",    desc: "Category visuals" },
-          { label: "Items With Recipe",   path: "/master/menu-item",         desc: "Menu items" },
+          { label: "Main Category", path: "/master/menu-category", desc: "Menu categories" },
+          { label: "Sub Category", path: "/master/menu-sub-category", desc: "Sub-categories" },
+          { label: "Main Category Theme", path: "/master/category-image", desc: "Category visuals" },
+          { label: "Items With Recipe", path: "/master/menu-item", desc: "Menu items" },
         ],
       },
     ],
@@ -147,10 +147,10 @@ const HEADER_MENUS = [
         label: "Raw Material",
         icon: "ki-filled ki-badge",
         items: [
-          { label: "Type",     path: "/master/raw-material-type-master", desc: "Material types" },
-          { label: "Category", path: "/master/raw-material-master",      desc: "Material categories" },
-          { label: "Items",    path: "/master/raw-material",             desc: "Raw material items" },
-          { label: "Unit",     path: "/master/unit",                     desc: "Units of measure" },
+          { label: "Type", path: "/master/raw-material-type-master", desc: "Material types" },
+          { label: "Category", path: "/master/raw-material-master", desc: "Material categories" },
+          { label: "Items", path: "/master/raw-material", desc: "Raw material items" },
+          { label: "Unit", path: "/master/unit", desc: "Units of measure" },
         ],
       },
     ],
@@ -163,18 +163,18 @@ const HEADER_MENUS = [
         label: "Stock",
         icon: "ki-filled ki-chart-simple",
         items: [
-          { label: "Raw Material OPB",       path: "/master/rawmaterial-opb",                    desc: "Opening balances" },
-          { label: "Stock Type",             path: "/stock-management/stock-type",               desc: "Stock categories" },
-          { label: "Purchase",               path: "/stock-management/purchase",                 desc: "Purchase orders" },
-          { label: "Purchase Return",        path: "/stock-management/purchase-return",          desc: "Return management" },
-          { label: "Auto / Manual PO",       path: "/stock-management/automanualpo",             desc: "Purchase orders" },
-          { label: "Store Issue",            path: "/stock-management/store-po",                 desc: "Issue to kitchen" },
-          { label: "Store Issue Return",     path: "/stock-management/store-po-return",          desc: "Return from kitchen" },
-          { label: "Chef Requisition",       path: "/stock-management/chef-requisition",         desc: "Chef requests" },
-          { label: "Stock Ledger",           path: "/stock-management/store-ledger",             desc: "Ledger view" },
-          { label: "Store Ordering Tickets", path: "/stock-management/store-ordering-tickets",   desc: "Order tickets" },
-          { label: "Daily Stock Manage",     path: "/stock-management/daily-stock-manage",       desc: "Daily tracking" },
-          { label: "Stock Report",           path: "/stock-management/stock-report",             desc: "Reports" },
+          { label: "Raw Material OPB", path: "/master/rawmaterial-opb", desc: "Opening balances" },
+          { label: "Stock Type", path: "/stock-management/stock-type", desc: "Stock categories" },
+          { label: "Purchase", path: "/stock-management/purchase", desc: "Purchase orders" },
+          { label: "Purchase Return", path: "/stock-management/purchase-return", desc: "Return management" },
+          { label: "Auto / Manual PO", path: "/stock-management/automanualpo", desc: "Purchase orders" },
+          { label: "Store Issue", path: "/stock-management/store-po", desc: "Issue to kitchen" },
+          { label: "Store Issue Return", path: "/stock-management/store-po-return", desc: "Return from kitchen" },
+          { label: "Chef Requisition", path: "/stock-management/chef-requisition", desc: "Chef requests" },
+          { label: "Stock Ledger", path: "/stock-management/store-ledger", desc: "Ledger view" },
+          { label: "Store Ordering Tickets", path: "/stock-management/store-ordering-tickets", desc: "Order tickets" },
+          { label: "Daily Stock Manage", path: "/stock-management/daily-stock-manage", desc: "Daily tracking" },
+          { label: "Stock Report", path: "/stock-management/stock-report", desc: "Reports" },
         ],
       },
     ],
@@ -187,17 +187,17 @@ const HEADER_MENUS = [
         label: "Account",
         icon: "ki-filled ki-bank",
         items: [
-          { label: "Debit",               path: "/bank-payment",          desc: "Bank payments" },
-          { label: "Credit",              path: "/cash-recipet",          desc: "Cash receipts" },
-          { label: "Journal Voucher",     path: "/journal-voucher",       desc: "Journal entries" },
-          { label: "Payments",            path: "/Payments",              desc: "Payment records" },
-          { label: "Expense",             path: "/account/expense",       desc: "Expense tracking" },
-          { label: "GST Report",          path: "/gst-report",            desc: "Tax reports" },
-          { label: "Account Ledger",      path: "/account",               desc: "Ledger view" },
-          { label: "Cash Book",           path: "/cash/cash-book",        desc: "Cash transactions" },
-          { label: "Bank Book",           path: "/bank/bank-book",        desc: "Bank transactions" },
-          { label: "Account Contact",     path: "/master/accountmaster",  desc: "Contact accounts" },
-          { label: "Income/Expense Type", path: "/master/ExpenseType",    desc: "Type configuration" },
+          { label: "Debit", path: "/bank-payment", desc: "Bank payments" },
+          { label: "Credit", path: "/cash-recipet", desc: "Cash receipts" },
+          { label: "Journal Voucher", path: "/journal-voucher", desc: "Journal entries" },
+          { label: "Payments", path: "/Payments", desc: "Payment records" },
+          { label: "Expense", path: "/account/expense", desc: "Expense tracking" },
+          { label: "GST Report", path: "/gst-report", desc: "Tax reports" },
+          { label: "Account Ledger", path: "/account", desc: "Ledger view" },
+          { label: "Cash Book", path: "/cash/cash-book", desc: "Cash transactions" },
+          { label: "Bank Book", path: "/bank/bank-book", desc: "Bank transactions" },
+          { label: "Account Contact", path: "/master/accountmaster", desc: "Contact accounts" },
+          { label: "Income/Expense Type", path: "/master/ExpenseType", desc: "Type configuration" },
         ],
       },
     ],
@@ -209,18 +209,18 @@ const ALL_GROUPS = HEADER_MENUS.flatMap((menu) => menu.groups);
 const HeaderMenuDropdown = ({ menu, isOpen, onToggle, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const btnRef   = useRef(null);
-  const dropRef  = useRef(null);
+  const btnRef = useRef(null);
+  const dropRef = useRef(null);
   const [dropPos, setDropPos] = useState(null);
 
   useEffect(() => {
     const updatePos = () => {
       if (btnRef.current) {
-        const rect   = btnRef.current.getBoundingClientRect();
-        const vw     = window.innerWidth;
+        const rect = btnRef.current.getBoundingClientRect();
+        const vw = window.innerWidth;
         const twoCol = menu.items.length > 4;
-        const dropW  = twoCol ? 440 : 230;
-        const left   = rect.left + dropW > vw
+        const dropW = twoCol ? 440 : 230;
+        const left = rect.left + dropW > vw
           ? Math.max(0, rect.right - dropW)
           : rect.left;
         setDropPos({ top: rect.bottom + 4, left });
@@ -244,7 +244,7 @@ const HeaderMenuDropdown = ({ menu, isOpen, onToggle, onClose }) => {
     const handler = (e) => {
       if (
         dropRef.current && !dropRef.current.contains(e.target) &&
-        btnRef.current  && !btnRef.current.contains(e.target)
+        btnRef.current && !btnRef.current.contains(e.target)
       ) {
         onClose();
       }
@@ -254,10 +254,10 @@ const HeaderMenuDropdown = ({ menu, isOpen, onToggle, onClose }) => {
   }, [isOpen, onClose]);
 
   const isActive = menu.items.some((i) => location.pathname === i.path);
-  const twoCol   = menu.items.length > 4;
-  const half     = Math.ceil(menu.items.length / 2);
-  const col1     = twoCol ? menu.items.slice(0, half) : menu.items;
-  const col2     = twoCol ? menu.items.slice(half)    : [];
+  const twoCol = menu.items.length > 4;
+  const half = Math.ceil(menu.items.length / 2);
+  const col1 = twoCol ? menu.items.slice(0, half) : menu.items;
+  const col2 = twoCol ? menu.items.slice(half) : [];
 
   const renderItem = (item) => {
     const active = location.pathname === item.path;
@@ -293,13 +293,13 @@ const HeaderMenuDropdown = ({ menu, isOpen, onToggle, onClose }) => {
     <div
       ref={dropRef}
       style={{
-        position:      "fixed",
-        top:           dropPos.top,
-        left:          dropPos.left,
-        zIndex:        99999,
-        minWidth:      twoCol ? 440 : 230,
-        maxHeight:     `calc(100vh - ${dropPos.top}px - 16px)`,
-        display:       "flex",
+        position: "fixed",
+        top: dropPos.top,
+        left: dropPos.left,
+        zIndex: 99999,
+        minWidth: twoCol ? 440 : 230,
+        maxHeight: `calc(100vh - ${dropPos.top}px - 16px)`,
+        display: "flex",
         flexDirection: "column",
       }}
       className="bg-white border border-gray-100 rounded-xl shadow-2xl"
@@ -345,9 +345,9 @@ const HeaderMenuDropdown = ({ menu, isOpen, onToggle, onClose }) => {
         <i
           className="ki-filled ki-down text-gray-400"
           style={{
-            fontSize:  14,
+            fontSize: 14,
             transition: "transform .15s",
-            transform:  isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
           }}
         />
       </button>
@@ -358,15 +358,15 @@ const HeaderMenuDropdown = ({ menu, isOpen, onToggle, onClose }) => {
 
 const HeaderTopbar = () => {
   const { currentUser } = useAuthContext();
-  const roleId      = Number(currentUser?.userBasicDetails?.role?.id);
+  const roleId = Number(currentUser?.userBasicDetails?.role?.id);
   const isSuperUser = roleId === 1 || roleId === 2;
-    const { hasModuleAccess } = useModuleAccess();
-  
-      const canAccessfollowup = hasModuleAccess("followup");
+  const { hasModuleAccess } = useModuleAccess();
 
- const navigate    = useNavigate();
+  const canAccessfollowup = hasModuleAccess("followup");
+
+  const navigate = useNavigate();
   const storeUser = useAuthStore((state) => state.user);
-  const rights    = useAuthStore((state) => state.rights);
+  const rights = useAuthStore((state) => state.rights);
   const isVisible = ["jcxpro", "justbanq"].includes(storeUser?.softType);
   const visibleGroups = ALL_GROUPS.map((group) => {
     const filteredItems = group.items.filter((item) => {
@@ -380,83 +380,83 @@ const HeaderTopbar = () => {
 
   const { isRTL } = useLanguage();
 
-  const itemChatRef          = useRef(null);
-  const itemUserRef          = useRef(null);
+  const itemChatRef = useRef(null);
+  const itemUserRef = useRef(null);
   const itemNotificationsRef = useRef(null);
-  const itemFollowUpRef      = useRef(null);
+  const itemFollowUpRef = useRef(null);
   const [isFollowUpOpen, setIsFollowUpOpen] = useState(false);
-const [followUps, setFollowUps] = useState([]);
-const [followUpLoading, setFollowUpLoading] = useState(false);
+  const [followUps, setFollowUps] = useState([]);
+  const [followUpLoading, setFollowUpLoading] = useState(false);
   const [checkInModal, setCheckInModal] = useState(false);
-  const [openMenuKey, setOpenMenuKey]   = useState(null);
+  const [openMenuKey, setOpenMenuKey] = useState(null);
   const { user, refreshUser } = useUser();
 
   useEffect(() => { refreshUser(); }, [refreshUser]);
 
-  const companyName  = user?.userBasicDetails?.companyName || "Company";
-  const services     = user?.userBasicDetails?.services    || "";
+  const companyName = user?.userBasicDetails?.companyName || "Company";
+  const services = user?.userBasicDetails?.services || "";
   const planValidity = user?.userPlan?.endDate?.split(" ")?.[0] || "";
-  const userLogo     = user?.logo;
+  const userLogo = user?.logo;
 
   const [remainingDays, setRemainingDays] = useState(null);
-const getAuthFromLocalStorage = () => {
-  try {
-    const raw = localStorage.getItem("auth-storage");
-    if (!raw) return { followupDay: null, userId: null };
-    const parsed = JSON.parse(raw);
-    return {
-      followupDay: parsed?.state?.user?.followupDay != null ? Number(parsed.state.user.followupDay) : null,
-      userId: parsed?.state?.user?.id ?? null,
-    };
-  } catch (err) {
-    console.error("[getAuthFromLocalStorage] Failed:", err);
-    return { followupDay: null, userId: null };
-  }
-};
+  const getAuthFromLocalStorage = () => {
+    try {
+      const raw = localStorage.getItem("auth-storage");
+      if (!raw) return { followupDay: null, userId: null };
+      const parsed = JSON.parse(raw);
+      return {
+        followupDay: parsed?.state?.user?.followupDay != null ? Number(parsed.state.user.followupDay) : null,
+        userId: parsed?.state?.user?.id ?? null,
+      };
+    } catch (err) {
+      console.error("[getAuthFromLocalStorage] Failed:", err);
+      return { followupDay: null, userId: null };
+    }
+  };
 
-const fetchFollowUps = useCallback(() => {
-  const { followupDay, userId } = getAuthFromLocalStorage();
-  if (!userId) return;
+  const fetchFollowUps = useCallback(() => {
+    const { followupDay, userId } = getAuthFromLocalStorage();
+    if (!userId) return;
 
-  const days = followupDay && followupDay > 0 ? followupDay : 5;
-  const startDate = dayjs().format("DD/MM/YYYY");
-  const endDate = dayjs().add(days, "day").format("DD/MM/YYYY");
+    const days = followupDay && followupDay > 0 ? followupDay : 5;
+    const startDate = dayjs().format("DD/MM/YYYY");
+    const endDate = dayjs().add(days, "day").format("DD/MM/YYYY");
 
-  console.log("params used:", { endDate, startDate, userId }); // ✅ safe here, before the call
+    console.log("params used:", { endDate, startDate, userId }); // ✅ safe here, before the call
 
-  setFollowUpLoading(true);
-  followupnotiy(endDate, "", false, "", startDate, userId)
-    .then((res) => {
-      console.log("followupnotiy raw response:", res?.data); // ✅ now res exists
+    setFollowUpLoading(true);
+    followupnotiy(endDate, "", false, "", startDate, userId)
+      .then((res) => {
+        console.log("followupnotiy raw response:", res?.data); // ✅ now res exists
 
-      const list =
-        res?.data?.data?.["Event Followup Details"] ||
-        res?.data?.data ||
-        res?.data ||
-        [];
-      console.log("parsed list length:", list.length);
+        const list =
+          res?.data?.data?.["Event Followup Details"] ||
+          res?.data?.data ||
+          res?.data ||
+          [];
+        console.log("parsed list length:", list.length);
 
-      const pending = (Array.isArray(list) ? list : [])
-        .filter((item) => !item.isDone)
-        .sort((a, b) => {
-          const da = dayjs(a.followupDate, "DD/MM/YYYY", true);
-          const db = dayjs(b.followupDate, "DD/MM/YYYY", true);
-          return da.valueOf() - db.valueOf();
-        });
+        const pending = (Array.isArray(list) ? list : [])
+          .filter((item) => !item.isDone)
+          .sort((a, b) => {
+            const da = dayjs(a.followupDate, "DD/MM/YYYY", true);
+            const db = dayjs(b.followupDate, "DD/MM/YYYY", true);
+            return da.valueOf() - db.valueOf();
+          });
 
-      setFollowUps(pending);
-    })
-    .catch((err) => {
-      console.error("Failed to fetch follow-up notifications:", err);
-      setFollowUps([]);
-    })
-    .finally(() => setFollowUpLoading(false));
-}, []);
+        setFollowUps(pending);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch follow-up notifications:", err);
+        setFollowUps([]);
+      })
+      .finally(() => setFollowUpLoading(false));
+  }, []);
   useEffect(() => {
     if (user?.userPlan?.endDate) {
       const rawDate = user.userPlan.endDate.split(" ")[0];
       const [day, month, year] = rawDate.split("/");
-      const end   = new Date(`${year}-${month}-${day}`);
+      const end = new Date(`${year}-${month}-${day}`);
       const today = new Date();
       end.setHours(0, 0, 0, 0);
       today.setHours(0, 0, 0, 0);
@@ -465,9 +465,9 @@ const fetchFollowUps = useCallback(() => {
   }, [user]);
 
   const getServiceIcon = () => {
-    if (services === "Good")    return <i className="ki-filled ki-verify text-primary" />;
+    if (services === "Good") return <i className="ki-filled ki-verify text-primary" />;
     if (services === "Average") return <i className="ki-filled ki-verify text-gray-400" />;
-    if (services === "Bad")     return <i className="ki-filled ki-verify text-danger" />;
+    if (services === "Bad") return <i className="ki-filled ki-verify text-danger" />;
     return null;
   };
 
@@ -480,7 +480,7 @@ const fetchFollowUps = useCallback(() => {
   return (
     <div className="flex items-center justify-between w-full gap-2 min-w-0">
 
-   
+
       {!isVisible && (
         <div className="flex items-center gap-2 shrink-0">
           <span className="font-semibold text-black text-lg truncate hidden sm:inline">
@@ -520,16 +520,16 @@ const fetchFollowUps = useCallback(() => {
 
         <div className="fixed left-0 right-0 bottom-10 flex justify-center md:static">
           <div className="flex items-center gap-2 lg:gap-3 shadow-lg md:shadow-none py-3 md:py-0 px-7 md:px-0 rounded-full md:rounded-none bg-white md:bg-transparent border md:border-0">
-             {/* Upgrade button — new */}
-{/* Upgrade button — only show if user has no active plan */}
-{!storeUser?.plan && (
-  <button
-    onClick={() => navigate("/price")}
-    className="btn btn-sm px-4 py-2 rounded-full bg-primary text-white text-xs font-semibold hover:bg-primary/90 transition-colors whitespace-nowrap"
-  >
-    Upgrade
-  </button>
-)}
+            {/* Upgrade button — new */}
+            {/* Upgrade button — only show if user has no active plan */}
+            {!storeUser?.plan && (
+              <button
+                onClick={() => navigate("/price")}
+                className="btn btn-sm px-4 py-2 rounded-full bg-primary text-white text-xs font-semibold hover:bg-primary/90 transition-colors whitespace-nowrap"
+              >
+                Upgrade
+              </button>
+            )}
             <Menu>
               <MenuItem
                 ref={itemChatRef}
@@ -563,25 +563,25 @@ const fetchFollowUps = useCallback(() => {
                 {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
               </MenuItem>
             </Menu>
-{ canAccessfollowup && (
-    <Menu>
-  <MenuItem
-    ref={itemFollowUpRef}
-    toggle="dropdown"
-    trigger="click"
-    onShow={fetchFollowUps}
-    dropdownProps={{
-      placement: isRTL() ? "bottom-start" : "bottom-end",
-      modifiers: [{ name: "offset", options: { offset: isRTL() ? [-70, 10] : [70, 10] } }],
-    }}
-  >
-    <MenuToggle className="btn btn-icon btn-icon-lg relative cursor-pointer size-9 rounded-full hover:bg-primary-clarity hover:text-primary text-gray-500">
-      <KeenIcon icon="ki-filled ki-calendar-tick" />
-    </MenuToggle>
-    {DropdownFollowUp({ menuTtemRef: itemFollowUpRef, followUps, loading: followUpLoading })}
-  </MenuItem>
-</Menu>
-)}
+            {canAccessfollowup && (
+              <Menu>
+                <MenuItem
+                  ref={itemFollowUpRef}
+                  toggle="dropdown"
+                  trigger="click"
+                  onShow={fetchFollowUps}
+                  dropdownProps={{
+                    placement: isRTL() ? "bottom-start" : "bottom-end",
+                    modifiers: [{ name: "offset", options: { offset: isRTL() ? [-70, 10] : [70, 10] } }],
+                  }}
+                >
+                  <MenuToggle className="btn btn-icon btn-icon-lg relative cursor-pointer size-9 rounded-full hover:bg-primary-clarity hover:text-primary text-gray-500">
+                    <KeenIcon icon="ki-filled ki-calendar-tick" />
+                  </MenuToggle>
+                  {DropdownFollowUp({ menuTtemRef: itemFollowUpRef, followUps, loading: followUpLoading })}
+                </MenuItem>
+              </Menu>
+            )}
           </div>
         </div>
 
@@ -597,17 +597,18 @@ const fetchFollowUps = useCallback(() => {
           >
             <MenuToggle className="btn btn-icon rounded-full">
               <img
-                className="size-9  border-2 border-gray-500  rounded-3xl shrink-0"
+                className="size-9 border-2 border-gray-500 rounded-full shrink-0 object-contain"
                 src={
                   userLogo &&
-                  typeof userLogo === "string" &&
-                  userLogo.trim() !== "" &&
-                  userLogo !== "null" &&
-                  userLogo !== "undefined" &&
-                  !userLogo.toLowerCase().includes("/null") &&
-                  /\.(jpg|jpeg|png|webp|gif)$/i.test(userLogo)
+                    typeof userLogo === "string" &&
+                    userLogo.trim() !== "" &&
+                    userLogo !== "null" &&
+                    userLogo !== "undefined" &&
+                    !userLogo.toLowerCase().includes("/null") &&
+                    !userLogo.toLowerCase().includes("noimage") &&
+                    /\.(jpg|jpeg|png|webp|gif)$/i.test(userLogo)
                     ? userLogo
-                    : toAbsoluteUrl("/media/menu/noImage.jpg")
+                    : toAbsoluteUrl("/images/monogram.png")
                 }
                 alt=""
               />
